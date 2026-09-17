@@ -3,6 +3,15 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[build.environment]
+  # These three are plain email/domain strings, not credentials -- Netlify's
+  # secrets scanner flags any declared env var value it finds anywhere in
+  # the repo or build output, even non-sensitive ones. Genuinely sensitive
+  # values (SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, etc.) are
+  # deliberately NOT listed here, so the scanner still catches those if
+  # one ever ends up somewhere it shouldn't.
+  SECRETS_SCAN_OMIT_KEYS = "COORDINATOR_EMAIL,EMAIL_FROM_ADDRESS,EMAIL_SANDBOX_DOMAIN"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -17,4 +26,3 @@
 # send-queued-emails via an external cron hitting its HTTP endpoint instead.
 [functions."send-queued-emails"]
   schedule = "*/2 * * * *"
-
