@@ -50,6 +50,10 @@ function toRow(q) {
     figure: q.figure ?? null,
     resource_ids: q.resourceIds,
     last_reviewed: q.lastReviewed,
+    teaching_explanation: q.teachingExplanation ?? null,
+    how_to_solve: q.howToSolve ?? null,
+    memory_tip: q.memoryTip ?? null,
+    review_prompt: q.reviewPrompt ?? null,
   };
 }
 

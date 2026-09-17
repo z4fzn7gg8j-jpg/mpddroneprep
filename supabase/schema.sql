@@ -52,6 +52,14 @@ create table if not exists part107_questions (
   figure jsonb,                      -- {figureId,title,editionOrDate,sourceUrl,isHistoricalTrainingCopy}
   resource_ids text[] not null default '{}',
   last_reviewed date not null,
+  -- Teaching fields (spec section 6 of the 2026-09-17 implementation note):
+  -- full explanation, a repeatable solving method, a short memory aid, and
+  -- a prompt asking the learner to restate the reasoning. All nullable --
+  -- older rows may not have them yet.
+  teaching_explanation text,
+  how_to_solve text,
+  memory_tip text,
+  review_prompt text,
   updated_at timestamptz not null default now()
 );
 
@@ -127,7 +135,7 @@ create table if not exists part107_attempt_answers (
 -- ---------------------------------------------------------------------
 create table if not exists part107_email_queue (
   id uuid primary key default gen_random_uuid(),
-  attempt_id uuid references part107_attempts (id),
+  attempt_id uuid references part107_attempts (id) on delete cascade,
   kind text not null check (kind in ('officer_report','coordinator_summary','resend')),
   recipient text not null,
   dedupe_key text not null unique,   -- e.g. attempt_id || ':' || kind, enforces no duplicate sends
@@ -142,3 +150,17 @@ create index if not exists idx_part107_attempts_officer on part107_attempts (off
 create index if not exists idx_part107_attempts_mode on part107_attempts (mode);
 create index if not exists idx_part107_questions_area_status on part107_questions (area, status);
 create index if not exists idx_part107_email_queue_status on part107_email_queue (status);
+
+-- ---------------------------------------------------------------------
+-- Map & Chart Reading course: per-officer lesson completion tracking.
+-- Deliberately its own small table rather than reusing part107_attempts
+-- (a lesson's knowledge check isn't a scored exam attempt, it's a
+-- completion + best-score marker for a teaching lesson).
+-- ---------------------------------------------------------------------
+create table if not exists part107_lesson_progress (
+  officer_id uuid not null references part107_officers (id) on delete cascade,
+  lesson_id text not null,
+  completed_at timestamptz not null default now(),
+  best_score numeric not null default 0,
+  primary key (officer_id, lesson_id)
+);

@@ -80,6 +80,11 @@ create policy part107_attempts_select_own on part107_attempts
   for select using (officer_id = auth.uid() or part107_is_coordinator());
 create policy part107_attempts_insert_own on part107_attempts
   for insert with check (officer_id = auth.uid());
+-- Deletion: an officer can delete their own attempts, a coordinator can
+-- delete anyone's. (Scoring/finalization still has no client UPDATE
+-- policy -- that's unrelated and still enforced server-side only.)
+create policy part107_attempts_delete_own on part107_attempts
+  for delete using (officer_id = auth.uid() or part107_is_coordinator());
 
 create policy part107_attempt_answers_select_own on part107_attempt_answers
   for select using (
@@ -94,3 +99,14 @@ create policy part107_email_queue_coordinator_read on part107_email_queue
   for select using (part107_is_coordinator());
 -- No client policy at all otherwise -- the email queue is written and
 -- processed entirely by Netlify Functions with the service role key.
+
+-- part107_lesson_progress: an officer can read/write only their own
+-- progress rows; coordinators can read everyone's (useful for seeing
+-- who's actually gone through the course, same spirit as attempts).
+alter table part107_lesson_progress enable row level security;
+create policy part107_lesson_progress_select on part107_lesson_progress
+  for select using (officer_id = auth.uid() or part107_is_coordinator());
+create policy part107_lesson_progress_upsert on part107_lesson_progress
+  for insert with check (officer_id = auth.uid());
+create policy part107_lesson_progress_update on part107_lesson_progress
+  for update using (officer_id = auth.uid());
