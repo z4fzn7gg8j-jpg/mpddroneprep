@@ -27,7 +27,7 @@ production" below for what else has to happen first, and read
 
 ## Question bank status
 
-**298 of the 300-question target are published today (2 held back pending a source I could not verify).** See
+**400 of 400 questions are published, on the current (Sept 2025) FAA/PSI blueprint.** See
 `KNOWN_LIMITATIONS.md` for the honest breakdown and the plan to grow it.
 The app itself reports the live count on the home page and warns you in
 each mode if the bank is too small to fill a full 60- or 75-question draw
@@ -121,7 +121,7 @@ for everything that still needs work before this is a finished product.
 
 ```
 src/
-  data/questions.json     the question bank (298 published, 2 draft)
+  data/questions.json     the question bank (400 published)
   data/resources.json     curated FAA/NOAA source library
   assets/figures/         bundled FAA figures the app imports (see
                            assets/figures/MANIFEST.md for the canonical

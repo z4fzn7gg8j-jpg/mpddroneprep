@@ -3,69 +3,95 @@
 This file is the single source of truth for "is this actually done." If
 something isn't listed here as done-and-verified, assume it needs work.
 
-## Question bank: 298 of 300 published (2 held back, explained below)
+## Question bank: 400 of 400 published, on the current (Sept 2025) blueprint
 
-This bank comes from a 300-question file Sean provided
-(`MPD107_300_question_bank_QA_corrected.json`), converted into this
-project's schema. I did not write these 300 questions myself. What I did
-before integrating it:
+This bank replaced the earlier 298-question one. It comes from a file
+Sean provided (`MPD107_400_visual_first_question_bank.json`), built on
+top of the earlier QA-corrected 300-question bank plus 100 new questions
+for the current blueprint's heavier Regulations/Operations weighting.
+Before integrating it, I independently verified the single biggest claim
+in the file -- that the FAA's scoring blueprint changed -- via a live web
+search, since it's a dramatic swing from the old ACS ranges (Regulations
+15-25%, Operations 35-45%) to the new one (Regulations 48%, Operations
+25%). Confirmed via the FAA's own August 2025 Airman Testing Community
+Advisory and PSI's Applicant Information Bulletin (effective September
+29, 2025, PSI is the FAA's testing vendor): the old ACS table is now
+obsolete and the FAA directs applicants to the PSI bulletin instead. This
+app was still teaching the old, obsolete weighting until this update --
+that was a real accuracy problem, now fixed.
 
-- Checked its `origin` field across all 300 entries: 234 are labeled
-  "Original," 30 "Adapted from FAA official sample" (FAA does publish
-  official sample questions publicly -- adapting those is standard,
-  legitimate practice), and the rest are various QA-correction labels
-  ("QA revised against current FAA guidance," etc.) suggesting the file
-  went through at least one accuracy-review pass before reaching me.
-- Checked for overlap with a different, copyrighted third-party quiz
-  Sean had pasted earlier in this conversation (which I declined to
-  copy from). Found real topical overlap -- both draw on the same public
-  FAA source figures -- but the actual question wording is independent,
-  **except** one entry (a thunderstorm-lifecycle question) whose phrasing
-  was close enough to that quiz's version that I'd want it reworded
-  before fully trusting it; flagging that here rather than silently
-  leaving it.
-- Verified every figure this file references against my own copy of the
-  FAA supplement (see "Figures and charts" below) before attaching any
-  figure to a question -- I did not take the file's figure citations on
-  faith.
+Distribution (published, matching the 48/20/5/2/25 blueprint exactly):
 
-Distribution (published only, all within FAA-published ranges):
-
-| Area | Published | Target |
+| Area | Published | Blueprint % |
 |---|---|---|
-| Regulations | 60 | 60 |
-| Airspace and requirements | 58 | 60 |
-| Weather | 40 | 42 |
-| Loading and performance | 25 | 27 |
-| Operations | 115 | 111 |
-| **Total** | **298** | **300** |
+| Regulations | 192 | 48% |
+| Airspace Classification and Operating Requirements | 80 | 20% |
+| Weather | 20 | 5% |
+| Loading and Performance | 8 | 2% |
+| Operations | 100 | 25% |
+| **Total** | **400** | **100%** |
 
-**The 2 held back** (`UAG-071`, `UAG-072`, both airspace) cite a source I
-have no way to verify: "the FAA Airman Testing Community Advisory, April
-2026." I don't have that document, couldn't find it, and won't publish a
-question whose figure I can't confirm exists or depicts what's claimed.
-Both are `status: "draft"` and excluded from every real attempt. If you
-have that source, send it and I'll verify and publish them properly.
+The 60-question Exam Simulation draws a fixed 29/12/3/1/15 mix -- the
+closest whole-question representation of that blueprint at 60 questions
+(same method the source file used). All 400 are `status: "published"`;
+none held back this time, since every figure the file cited matched a
+verified asset.
 
-**What's still unverified:** I checked structure, provenance, and figure
-citations, but I have not independently re-derived the correct answer for
-all 298 questions against the ACS/regulations myself the way I did for
-the smaller hand-written set this replaced. Distractor-level explanations
-for wrong answers were not present in the source file (it only provided
-one explanation, for the correct answer) -- rather than invent
-plausible-sounding but unverified reasoning for why each specific wrong
-answer is wrong, incorrect choices show a neutral "see the explanation on
-the correct answer above" instead of a fabricated distractor-specific
-rationale. Before trusting this bank for real exam-readiness decisions,
-have someone at MPD spot-check a sample against the current FAA ACS.
+**What I checked before integrating:** the `origin` field on all 400
+entries (mix of "Retained from QA-corrected 300-question bank," new
+generation for the areas that grew, no entries claiming to derive from
+the third-party quiz Sean pasted earlier), and every `supplement_figure`
+citation against my own copy of the source PDF -- I pulled 4 more figures
+(24, 69, 74, 78) I didn't have yet and visually confirmed each one before
+attaching it to any question, same process as before.
+
+**What's still unverified:** I have not independently re-derived the
+correct answer for all 400 questions against the ACS/regulations myself.
+Before relying on this for real exam-readiness decisions, have someone at
+MPD spot-check a sample, especially in Regulations given how much new
+content that area picked up.
+
+**Teaching content (added in a follow-up upload):** every question now
+has genuine per-choice reasoning (why each of A/B/C is right or wrong,
+not the earlier generic "see the correct answer" placeholder), plus a
+`teachingExplanation`, a repeatable `howToSolve` method, a short
+`memoryTip`, and a `reviewPrompt` that asks the learner to restate the
+reasoning in their own words. These display in Study Mode immediately
+after answering, and in the post-submission review for Practice Quiz and
+Exam Simulation (shown by default for missed questions, behind a "Show
+reasoning" toggle for correct ones). I did not independently verify each
+of the 1,200 per-choice rationales (400 questions x 3 choices) -- same
+caveat as the correct-answer claims above.
+placeholders (the source data only supplies one explanation, for the
+correct answer) rather than invented reasoning I can't verify. Before
+relying on this for real exam-readiness decisions, have someone at MPD
+spot-check a sample, especially in Regulations given how much new content
+that area picked up.
+
+**Not replicated:** the real UAG exam is 65 questions on the day (60
+scored + 5 unscored "validation" questions, indistinguishable from each
+other, all counted toward the 120-minute limit). This simulation stays at
+60 scored questions only -- reproducing indistinguishable unscored
+questions would add complexity without teaching anything, since the
+examinee can't tell them apart on the real test either.
+
+**Currency caveat on top of the currency caveat:** the FAA's own advisory
+says another test change is coming -- image-based questions using charts
+not in the printed supplement, effective October 26, 2026 (corrected from
+an earlier-stated October 27 by a subsequent FAA advisory -- verified
+against an actual FAA-hosted PDF dated August 2026). This app
+intentionally keeps using the official supplement figures for now (they
+teach the same chart-reading skills), but that October 2026 change should
+be checked against before trusting this blueprint indefinitely.
 
 To add more or edit any question: follow the shape in `src/lib/types.ts`
 (`Question` interface), run `npm test` (`questionBank.test.ts` checks
-structural integrity), then re-run `supabase/seed/import.mjs`.
+structural integrity), then re-run `supabase/seed/import.mjs` --- or use
+the in-app Question Editor (Coordinator Dashboard -> Question Editor).
 
-## Figures and charts: 14 real FAA figures bundled
+## Figures and charts: 18 real FAA figures bundled
 
-Spec section 5 requires authentic FAA figures. Fourteen are now bundled,
+Spec section 5 requires authentic FAA figures. Eighteen are now bundled,
 all extracted from the same official FAA **Airman Knowledge Testing
 Supplement for Sport Pilot, Recreational Pilot, Remote Pilot, and Private
 Pilot** (2018 edition), which explicitly covers Unmanned Aircraft General
@@ -73,20 +99,24 @@ Pilot** (2018 edition), which explicitly covers Unmanned Aircraft General
 
 | Figure | Used by |
 |---|---|
-| Legend 1 -- Sectional Aeronautical Chart | 2 questions |
-| Figure 2 -- Load Factor Chart | 2 questions |
+| Legend 1 -- Sectional Aeronautical Chart | 10 questions |
+| Figure 2 -- Load Factor Chart | 8 questions |
 | Figure 8 -- Density Altitude Chart | 1 question (illustrative) |
-| Figure 12 -- METAR | 3 questions |
-| Figure 15 -- TAF | 1 question |
+| Figure 12 -- METAR | 11 questions |
+| Figure 15 -- TAF | 7 questions |
 | Figure 17 -- Winds and Temperatures Aloft Forecast | 1 question |
-| Figure 20 -- Sectional Chart Excerpt (Norfolk, VA) | 4 questions |
-| Figure 21 -- Sectional Chart Excerpt (north-central ND) | 5 questions |
-| Figure 22 -- Sectional Chart Excerpt (Coeur d'Alene, ID) | 4 questions |
-| Figure 23 -- Sectional Chart Excerpt (Savannah, GA) | 2 questions |
-| Figure 25 -- Sectional Chart Excerpt (Dallas/Fort Worth, TX) | 1 question |
-| Figure 26 -- Sectional Chart Excerpt (Cooperstown/Jamestown, ND) | 4 questions |
+| Figure 20 -- Sectional Chart Excerpt (Norfolk, VA) | 18 questions |
+| Figure 21 -- Sectional Chart Excerpt (north-central ND) | 22 questions |
+| Figure 22 -- Sectional Chart Excerpt (Coeur d'Alene, ID) | 15 questions |
+| Figure 23 -- Sectional Chart Excerpt (Savannah, GA) | 18 questions |
+| Figure 24 -- Sectional Chart Excerpt (northeast TX) | 9 questions |
+| Figure 25 -- Sectional Chart Excerpt (Dallas/Fort Worth, TX) | 12 questions |
+| Figure 26 -- Sectional Chart Excerpt (Cooperstown/Jamestown, ND) | 15 questions |
 | Figure 59 -- Sectional Chart Excerpt (Toledo, OH) | 1 question |
-| Figure 75 -- Sectional Chart Excerpt (Buckeye/Gila Bend, AZ) | 2 questions |
+| Figure 69 -- Sectional Chart Excerpt (Corpus Christi, TX) | 1 question |
+| Figure 74 -- Sectional Chart Excerpt (San Jose/Bay Area, CA) | 3 questions |
+| Figure 75 -- Sectional Chart Excerpt (Buckeye/Gila Bend, AZ) | 5 questions |
+| Figure 78 -- Sectional Chart Excerpt (Sioux City, IA) | 6 questions |
 
 Source images live at `assets/figures/*.jpg` (canonical copies, per
 `assets/figures/MANIFEST.md`) and `src/assets/figures/*.jpg` (working
@@ -98,10 +128,10 @@ real-world navigation" notice, and the app never falls back to an
 AI-generated chart.
 
 **What's honestly unverified about the original 9 chart questions I wrote
-by hand** (before the 300-question file arrived, still present for the
-figures they cover): they were written by reading clearly-labeled text
-directly off each chart -- a "W-50" warning area label, a "DEVILS LAKE
-WEST MOA" label, an "AWOS-3 135.075" frequency box, a large-digit/
+by hand** (before either question-bank file arrived, still present for
+the figures they cover): they were written by reading clearly-labeled
+text directly off each chart -- a "W-50" warning area label, a "DEVILS
+LAKE WEST MOA" label, an "AWOS-3 135.075" frequency box, a large-digit/
 small-digit MEF quadrangle number, a "BUCKEYE 110.6 Ch 43 BXK" VOR box,
 "ALERT AREA A-231" and "RESTRICTED R-2304" labels -- rather than
 interpreting ambiguous symbol coloring or fine print. The 21
