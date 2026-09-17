@@ -1,5 +1,5 @@
 // POST /.netlify/functions/start-attempt
-// Body: { mode: "study"|"practice"|"simulation", areaFilter?, count? }
+// Body: { mode: "study"|"practice"|"simulation", areaFilter?, skillCategory?, count? }
 //
 // STATUS: not yet executed against a live Supabase project -- see
 // netlify/functions/_shared.ts header. The sampling logic mirrors
@@ -11,14 +11,54 @@
 import type { Handler } from "@netlify/functions";
 import { supabaseAdmin, requireOfficer, jsonResponse, errorResponse, HttpError, checkRateLimit } from "./_shared";
 
+// Current PSI UAG blueprint (effective 2025-09-29): 48/20/5/2/25 --
+// mirrors src/lib/types.ts's SIMULATION_DISTRIBUTION. Keep these two in
+// sync if the blueprint ever changes again.
 const SIMULATION_DISTRIBUTION: Record<string, number> = {
-  regulations: 12,
+  regulations: 29,
   airspace: 12,
-  weather: 8,
-  loading_performance: 6,
-  operations: 22,
+  weather: 3,
+  loading_performance: 1,
+  operations: 15,
 };
 const SIMULATION_TIME_LIMIT_MS = 2 * 60 * 60 * 1000;
+
+// Mirrors src/lib/mapCategories.ts's classifyMapQuestion -- duplicated
+// here for the same reason as SIMULATION_DISTRIBUTION above (functions
+// and the client bundle separately). Keep in sync if that file changes.
+function classifyMapQuestion(subtopic: string, topic: string): string {
+  const s = (subtopic + " " + topic).toLowerCase();
+  if (s.includes("class b")) return "Class B Airspace";
+  if (s.includes("class c")) return "Class C Airspace";
+  if (s.includes("class d")) return "Class D Airspace";
+  if (s.includes("class e")) return "Class E Airspace";
+  if (
+    s.includes("ctaf") || s.includes("frequency") || s.includes("airport symbol") ||
+    s.includes("airport elevation") || s.includes("private airport") || s.includes("airport data") ||
+    s.includes("traffic pattern") || s.includes("tower monitoring") || s.includes("vfr checkpoint")
+  ) {
+    return "Airport Symbols, Frequencies & Traffic Patterns";
+  }
+  if (s.includes("latitude") || s.includes("longitude") || s.includes("coordinate")) {
+    return "Lat/Long & Coordinates";
+  }
+  if (
+    s.includes("moa") || s.includes("restricted") || s.includes("military training route") ||
+    s.includes("special-use") || s.includes("special use") || s.includes("g route")
+  ) {
+    return "Special-Use Airspace (MOA/Restricted/Routes)";
+  }
+  if (s.includes("obstacle") || s.includes("terrain") || s.includes("mef") || s.includes("elevation figure") || s.includes("msl") || s.includes("agl")) {
+    return "Obstacles, Terrain & Elevation";
+  }
+  if (s.includes("authorization") || s.includes("shelf") || s.includes("ceiling") || s.includes("layering") || s.includes("below floor") || s.includes("notam")) {
+    return "Airspace Boundaries & Authorization";
+  }
+  if (s.includes("metar")) return "METAR";
+  if (s.includes("taf")) return "TAF";
+  if (s.includes("load factor") || s.includes("bank angle")) return "Load Factor Chart";
+  return "General Chart Reading";
+}
 
 function shuffle<T>(arr: T[]): T[] {
   const a = arr.slice();
@@ -92,11 +132,24 @@ export const handler: Handler = async (event) => {
     } else {
       // study / practice
       const areaFilter = body.areaFilter && body.areaFilter !== "mixed" ? body.areaFilter : null;
-      let query = admin.from("part107_questions").select("id").eq("status", "published");
+      const skillCategory = body.skillCategory as string | undefined;
+      const flatMixed = body.flatMixed === true;
+      let query = admin.from("part107_questions").select("id, subtopic, topic, figure").eq("status", "published");
       if (areaFilter) query = query.eq("area", areaFilter);
       const { data: pool, error } = await query;
       if (error) throw new HttpError(500, `Question lookup failed: ${error.message}`);
-      const shuffled = shuffle(pool ?? []);
+      let filtered = pool ?? [];
+      if (skillCategory) {
+        // Map & Chart Reading: cross-area, visual questions only, matched
+        // by the same classifier the client uses.
+        filtered = filtered.filter((q: any) => q.figure && classifyMapQuestion(q.subtopic, q.topic) === skillCategory);
+      } else if (flatMixed && !areaFilter) {
+        // Map & Chart Mastery Check: all visual questions, no area/blueprint
+        // weighting (a flat blueprint weighting would badly under-fill this
+        // pool since Regulations has no visual questions at all).
+        filtered = filtered.filter((q: any) => q.figure);
+      }
+      const shuffled = shuffle(filtered);
       const count = mode === "practice" ? Math.min(body.count ?? 20, shuffled.length) : shuffled.length;
       questionIds = shuffled.slice(0, count).map((q: any) => q.id);
     }
