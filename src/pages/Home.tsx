@@ -7,6 +7,7 @@ import ReadinessBadge from "../components/ReadinessBadge";
 import { FAA_AREA_LABELS, type FaaArea, type Attempt } from "../lib/types";
 import { useAuth } from "../lib/auth";
 import { listMyAttempts } from "../lib/remoteAttempts";
+import { readinessEncouragement } from "../lib/motivation";
 
 export default function Home() {
   const demo = isDemoMode();
@@ -57,6 +58,16 @@ export default function Home() {
 
   const isReady = readiness.status === "recommended_to_schedule";
 
+  // Progress-over-time: compare the earliest and latest simulation scores
+  // so this reflects the officer's own real history, not a canned line.
+  const chronological = finalizedSimulations
+    .slice()
+    .sort((a, b) => new Date(a.submittedAt ?? 0).getTime() - new Date(b.submittedAt ?? 0).getTime());
+  const progressDelta =
+    chronological.length >= 2
+      ? Math.round((chronological[chronological.length - 1].score!.percent - chronological[0].score!.percent) * 10) / 10
+      : null;
+
   return (
     <div>
       {demo && (
@@ -94,6 +105,14 @@ export default function Home() {
             </span>
           )}
         </div>
+        <p style={{ margin: "0 0 12px" }}>{readinessEncouragement(readiness.status)}</p>
+        {progressDelta !== null && progressDelta !== 0 && (
+          <p style={{ color: progressDelta > 0 ? "var(--success-700)" : "var(--slate-500)", fontWeight: 600, marginTop: -6 }}>
+            {progressDelta > 0
+              ? `Up ${progressDelta} points since your first simulation.`
+              : `Down ${Math.abs(progressDelta)} points from your first simulation -- worth a look at what changed.`}
+          </p>
+        )}
         <p style={{ color: "var(--slate-500)", fontSize: "0.9rem" }}>
           General guidance: you'll want to see multiple timed simulation scores of {READINESS_CONFIG.overallPercentMin}%
           or higher -- with every area at or above {READINESS_CONFIG.areaPercentMin}% -- before scheduling the real

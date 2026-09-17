@@ -105,6 +105,29 @@ export default function QuestionCard({
       </fieldset>
 
       {revealed && (
+        <div style={{ marginTop: 10, padding: "10px 12px", background: "var(--mist)", borderRadius: 6 }}>
+          {question.teachingExplanation && (
+            <p style={{ margin: "0 0 8px" }}>{question.teachingExplanation}</p>
+          )}
+          {question.howToSolve && (
+            <p style={{ margin: "0 0 8px", fontSize: "0.9rem" }}>
+              <strong>How to solve it:</strong> {question.howToSolve}
+            </p>
+          )}
+          {question.memoryTip && (
+            <p style={{ margin: "0 0 8px", fontSize: "0.9rem", color: "var(--gold-600)" }}>
+              <strong>Remember:</strong> {question.memoryTip}
+            </p>
+          )}
+          {question.reviewPrompt && (
+            <p style={{ margin: 0, fontSize: "0.85rem", fontStyle: "italic", color: "var(--slate-500)" }}>
+              {question.reviewPrompt}
+            </p>
+          )}
+        </div>
+      )}
+
+      {revealed && (
         <div style={{ marginTop: 8, fontSize: "0.85rem", color: "var(--slate-500)" }}>
           ACS code: {question.acsCode} &middot; Source:{" "}
           <a href={question.sourceUrls[0]} target="_blank" rel="noreferrer">

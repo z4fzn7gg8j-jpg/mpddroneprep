@@ -7,5 +7,14 @@
     "topic": "Full test supplement -- sectional chart legend, figures, weather products, and performance charts used throughout this question bank",
     "lastReviewed": "2026-09-17",
     "status": "ok"
+  },
+  {
+    "id": "RES-PSI-BULLETIN",
+    "title": "UAG Applicant Information Bulletin",
+    "publisher": "PSI Services LLC (FAA's testing vendor)",
+    "url": "https://media.psiexams.com/faa/UAG_Information_Bulletin.pdf",
+    "topic": "Current test blueprint (effective September 29, 2025) -- the content-percentage weighting this app's Exam Simulation is based on",
+    "lastReviewed": "2026-09-17",
+    "status": "ok"
   }
 ]

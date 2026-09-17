@@ -1,4 +1,5 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { FaaArea } from "../lib/types";
 import { FAA_AREA_LABELS } from "../lib/types";
 import { PUBLISHED_QUESTIONS } from "../lib/questionBank";
@@ -23,6 +24,9 @@ export default function StudyMode() {
           <button className="btn btn-primary" disabled={busy} onClick={() => begin({ mode: "study", areaFilter: "mixed", pool: PUBLISHED_QUESTIONS })}>
             All areas mixed
           </button>
+          <Link to="/study/map-charts" className="btn btn-gold" style={{ textDecoration: "none", textAlign: "center" }}>
+            Map & Chart Reading &rarr;
+          </Link>
           {AREAS.map((a) => (
             <button
               key={a}

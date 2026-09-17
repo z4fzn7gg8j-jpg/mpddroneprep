@@ -7,6 +7,7 @@ const baseLinks = [
   { to: "/study", label: "Study Mode" },
   { to: "/practice", label: "Practice Quiz" },
   { to: "/simulation", label: "Exam Simulation" },
+  { to: "/history", label: "History" },
   { to: "/resources", label: "Resources" },
 ];
 

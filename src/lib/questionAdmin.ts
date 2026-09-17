@@ -19,6 +19,10 @@ function rowToQuestion(row: any): Question {
     figure: row.figure ?? undefined,
     resourceIds: row.resource_ids ?? [],
     lastReviewed: row.last_reviewed,
+    teachingExplanation: row.teaching_explanation ?? undefined,
+    howToSolve: row.how_to_solve ?? undefined,
+    memoryTip: row.memory_tip ?? undefined,
+    reviewPrompt: row.review_prompt ?? undefined,
   };
 }
 
@@ -40,6 +44,10 @@ function questionToRow(q: Question) {
     figure: q.figure ?? null,
     resource_ids: q.resourceIds,
     last_reviewed: q.lastReviewed,
+    teaching_explanation: q.teachingExplanation ?? null,
+    how_to_solve: q.howToSolve ?? null,
+    memory_tip: q.memoryTip ?? null,
+    review_prompt: q.reviewPrompt ?? null,
     updated_at: new Date().toISOString(),
   };
 }

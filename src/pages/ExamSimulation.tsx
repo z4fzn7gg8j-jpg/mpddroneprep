@@ -11,6 +11,7 @@ import { useAttemptController } from "../lib/useAttemptController";
 import { useAuth } from "../lib/auth";
 import AttemptRunner from "../components/AttemptRunner";
 import { SIMULATION_TOTAL, SIMULATION_DISTRIBUTION, FAA_AREA_LABELS } from "../lib/types";
+import { completionMessage } from "../lib/motivation";
 
 export default function ExamSimulation() {
   const navigate = useNavigate();
@@ -55,11 +56,15 @@ export default function ExamSimulation() {
   if (resuming) return <p>Loading...</p>;
 
   if (attempt?.finalized) {
+    const percent = attempt.score?.percent ?? 0;
     return (
       <div>
         <h1>Exam Simulation complete</h1>
         <p>
-          Score: {attempt.score?.correct}/{attempt.score?.total} ({attempt.score?.percent}%)
+          Score: {attempt.score?.correct}/{attempt.score?.total} ({percent}%)
+        </p>
+        <p className="card" style={{ background: "var(--navy-100)" }}>
+          {completionMessage(percent, "simulation")}
         </p>
         <button className="btn btn-primary" onClick={() => navigate(`/results/${attempt.id}`)}>
           View full report

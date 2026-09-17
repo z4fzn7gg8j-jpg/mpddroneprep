@@ -12,32 +12,43 @@ export type FaaArea =
 
 export const FAA_AREA_LABELS: Record<FaaArea, string> = {
   regulations: "Regulations",
-  airspace: "Airspace and Requirements",
+  airspace: "Airspace Classification and Operating Requirements",
   weather: "Weather",
   loading_performance: "Loading and Performance",
   operations: "Operations",
 };
 
-// Published FAA-S-ACS-10B percentage ranges. Verified against multiple
-// current sources in September 2026; re-verify against the ACS PDF
-// (faa.gov/training_testing/testing/acs/uas_acs.pdf) before each content
-// review cycle -- the app does not auto-check this.
+// Published content-percentage blueprint from PSI's Applicant Information
+// Bulletin (the FAA's testing vendor), effective September 29, 2025. This
+// superseded the older FAA-S-ACS-10B percentage-range table -- the FAA's
+// August 2025 Airman Testing Community Advisory states that older table
+// is now obsolete and directs applicants to the PSI bulletin instead:
+// https://media.psiexams.com/faa/UAG_Information_Bulletin.pdf
+// Verified against independent current sources in September 2026.
+// Re-verify before each content review cycle -- the app does not
+// auto-check this, and the FAA/PSI can revise the blueprint again.
 export const FAA_PUBLISHED_RANGE: Record<FaaArea, [number, number]> = {
-  regulations: [15, 25],
-  airspace: [15, 25],
-  weather: [11, 16],
-  loading_performance: [7, 11],
-  operations: [35, 45],
+  regulations: [48, 48],
+  airspace: [20, 20],
+  weather: [5, 5],
+  loading_performance: [2, 2],
+  operations: [25, 25],
 };
 
-// Our design-choice question counts within the published ranges (not
-// FAA-guaranteed counts on a real exam -- see spec section 2).
+// Closest whole-question representation of the 48/20/5/2/25 blueprint at
+// 60 questions (the same count as the real UAG exam's scored questions).
+// The real exam also includes 5 unscored "validation" questions mixed in
+// indistinguishably (65 total, all counted toward the 120-minute time
+// limit) -- this simulation does not replicate those, since they carry no
+// study value: the examinee cannot tell them apart from scored ones, and
+// reproducing that indistinguishability would only add complexity without
+// teaching anything.
 export const SIMULATION_DISTRIBUTION: Record<FaaArea, number> = {
-  regulations: 12,
+  regulations: 29,
   airspace: 12,
-  weather: 8,
-  loading_performance: 6,
-  operations: 22,
+  weather: 3,
+  loading_performance: 1,
+  operations: 15,
 };
 export const SIMULATION_TOTAL = 60;
 
@@ -87,6 +98,11 @@ export interface Question {
   figure?: FigureRef;
   resourceIds: string[]; // links into resources.json
   lastReviewed: string; // ISO date
+  // Teaching fields (optional -- older data may not have them).
+  teachingExplanation?: string; // full explanation tying the answer to the rule/figure
+  howToSolve?: string; // repeatable method for this type of question
+  memoryTip?: string; // short takeaway/mnemonic
+  reviewPrompt?: string; // prompts the learner to restate the reasoning
 }
 
 export type AttemptMode = "study" | "practice" | "simulation";

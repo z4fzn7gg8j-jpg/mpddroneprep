@@ -20,6 +20,10 @@ import faaFig2LoadFactorChart from "../assets/figures/faa-fig2-load-factor-chart
 import faaFig23SectionalExcerptSavannah from "../assets/figures/faa-fig23-sectional-excerpt-savannah.jpg";
 import faaFig26SectionalExcerptNd from "../assets/figures/faa-fig26-sectional-excerpt-nd.jpg";
 import faaFig59SectionalExcerptToledo from "../assets/figures/faa-fig59-sectional-excerpt-toledo.jpg";
+import faaFig24SectionalExcerptNeTexas from "../assets/figures/faa-fig24-sectional-excerpt-ne-texas.jpg";
+import faaFig69SectionalExcerptCorpusChristi from "../assets/figures/faa-fig69-sectional-excerpt-corpus-christi.jpg";
+import faaFig74SectionalExcerptSanJose from "../assets/figures/faa-fig74-sectional-excerpt-san-jose.jpg";
+import faaFig78SectionalExcerptSiouxCity from "../assets/figures/faa-fig78-sectional-excerpt-sioux-city.jpg";
 import faaFig15Taf from "../assets/figures/faa-fig15-taf.jpg";
 import faaFig17WindsTempsAloft from "../assets/figures/faa-fig17-winds-temps-aloft.jpg";
 import faaFig8DensityAltitudeChart from "../assets/figures/faa-fig8-density-altitude-chart.jpg";
@@ -36,6 +40,10 @@ const FIGURE_MAP: Record<string, string> = {
   "faa-fig23-sectional-excerpt-savannah": faaFig23SectionalExcerptSavannah,
   "faa-fig26-sectional-excerpt-nd": faaFig26SectionalExcerptNd,
   "faa-fig59-sectional-excerpt-toledo": faaFig59SectionalExcerptToledo,
+  "faa-fig24-sectional-excerpt-ne-texas": faaFig24SectionalExcerptNeTexas,
+  "faa-fig69-sectional-excerpt-corpus-christi": faaFig69SectionalExcerptCorpusChristi,
+  "faa-fig74-sectional-excerpt-san-jose": faaFig74SectionalExcerptSanJose,
+  "faa-fig78-sectional-excerpt-sioux-city": faaFig78SectionalExcerptSiouxCity,
   "faa-fig15-taf": faaFig15Taf,
   "faa-fig17-winds-temps-aloft": faaFig17WindsTempsAloft,
   "faa-fig8-density-altitude-chart": faaFig8DensityAltitudeChart,

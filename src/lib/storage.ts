@@ -51,6 +51,11 @@ export function getAttempt(id: string): Attempt | null {
   return loadAttempts().find((a) => a.id === id) ?? null;
 }
 
+export function deleteAttempt(id: string): void {
+  const attempts = loadAttempts().filter((a) => a.id !== id);
+  localStorage.setItem(KEY_ATTEMPTS, JSON.stringify(attempts));
+}
+
 export function deleteAllDemoData(): void {
   localStorage.removeItem(KEY_ATTEMPTS);
   localStorage.removeItem(KEY_OFFICER);

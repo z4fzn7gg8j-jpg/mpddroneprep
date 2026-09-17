@@ -122,7 +122,7 @@ export default function ResultsPage() {
               <th>Correct</th>
               <th>Questions on this attempt</th>
               <th>Score</th>
-              <th>Published FAA range</th>
+              <th>Blueprint weight</th>
             </tr>
           </thead>
           <tbody>
@@ -133,7 +133,7 @@ export default function ResultsPage() {
                 <td>{a.total}</td>
                 <td>{a.percent}%</td>
                 <td>
-                  {FAA_PUBLISHED_RANGE[a.area][0]}–{FAA_PUBLISHED_RANGE[a.area][1]}%
+                  {FAA_PUBLISHED_RANGE[a.area][0]}% of the exam
                 </td>
               </tr>
             ))}
@@ -188,10 +188,49 @@ export default function ResultsPage() {
                     {c.id}. {c.text}
                     {c.id === a?.choiceId && " (your answer)"}
                     {c.id === q.correctChoiceId && " (correct answer)"}
+                    <div style={{ fontWeight: 400, fontSize: "0.88rem", color: "var(--slate-500)", marginTop: 2 }}>
+                      {c.explanation}
+                    </div>
                   </li>
                 ))}
               </ul>
-              <p style={{ fontSize: "0.9rem", color: "var(--slate-500)", margin: "4px 0" }}>
+              {(q.teachingExplanation || q.howToSolve || q.memoryTip) && (
+                status === "Correct" ? (
+                  <details style={{ marginTop: 6 }}>
+                    <summary style={{ cursor: "pointer", fontSize: "0.9rem", color: "var(--navy-700)" }}>
+                      Show reasoning
+                    </summary>
+                    <div style={{ marginTop: 6, padding: "10px 12px", background: "var(--mist)", borderRadius: 6 }}>
+                      {q.teachingExplanation && <p style={{ margin: "0 0 8px" }}>{q.teachingExplanation}</p>}
+                      {q.howToSolve && (
+                        <p style={{ margin: "0 0 8px", fontSize: "0.9rem" }}>
+                          <strong>How to solve it:</strong> {q.howToSolve}
+                        </p>
+                      )}
+                      {q.memoryTip && (
+                        <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--gold-600)" }}>
+                          <strong>Remember:</strong> {q.memoryTip}
+                        </p>
+                      )}
+                    </div>
+                  </details>
+                ) : (
+                  <div style={{ marginTop: 6, padding: "10px 12px", background: "var(--mist)", borderRadius: 6 }}>
+                    {q.teachingExplanation && <p style={{ margin: "0 0 8px" }}>{q.teachingExplanation}</p>}
+                    {q.howToSolve && (
+                      <p style={{ margin: "0 0 8px", fontSize: "0.9rem" }}>
+                        <strong>How to solve it:</strong> {q.howToSolve}
+                      </p>
+                    )}
+                    {q.memoryTip && (
+                      <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--gold-600)" }}>
+                        <strong>Remember:</strong> {q.memoryTip}
+                      </p>
+                    )}
+                  </div>
+                )
+              )}
+              <p style={{ fontSize: "0.9rem", color: "var(--slate-500)", margin: "8px 0 4px" }}>
                 {FAA_AREA_LABELS[q.area]} &middot; {q.topic} &middot; ACS {q.acsCode}
                 {q.figure && " \u00b7 includes a figure"}
               </p>

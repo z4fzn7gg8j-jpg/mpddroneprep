@@ -33,6 +33,20 @@ export default function AttemptRunner({
   const q = questions[index];
   const ans = q ? attempt.answers[q.id] : undefined;
 
+  // Current streak of consecutive correct answers ending at this question,
+  // scanning backward by position so it still makes sense if someone jumps
+  // around with Previous/Next. Only meaningful where feedback is immediate
+  // (Study Mode) -- elsewhere, correctness isn't known until submission.
+  let streak = 0;
+  if (showFeedbackImmediately) {
+    for (let i = index; i >= 0; i--) {
+      const qq = questions[i];
+      const a = attempt.answers[qq.id];
+      if (a?.choiceId && a.choiceId === qq.correctChoiceId) streak++;
+      else break;
+    }
+  }
+
   function handleExpire() {
     if (!attempt.finalized) onSubmit();
   }
@@ -54,6 +68,12 @@ export default function AttemptRunner({
         {attempt.deadline && !attempt.finalized && (
           <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 12 }}>
             <Timer deadlineIso={attempt.deadline} onExpire={handleExpire} />
+          </div>
+        )}
+
+        {showFeedbackImmediately && streak >= 2 && (
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+            <span className="badge badge-ready">{streak} in a row</span>
           </div>
         )}
 

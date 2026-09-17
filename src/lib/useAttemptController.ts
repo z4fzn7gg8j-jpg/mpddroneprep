@@ -9,6 +9,8 @@ import { ALL_QUESTIONS } from "./questionBank";
 export interface BeginOptions {
   mode: AttemptMode;
   areaFilter?: FaaArea | "mixed";
+  skillCategory?: string;
+  flatMixed?: boolean;
   count?: number;
   pool: Question[];
 }
@@ -28,7 +30,7 @@ export function useAttemptController() {
     }
     setBusy(true);
     try {
-      setAttempt(await startAttemptRemote({ mode: opts.mode, areaFilter: opts.areaFilter, count: opts.count }));
+      setAttempt(await startAttemptRemote({ mode: opts.mode, areaFilter: opts.areaFilter, skillCategory: opts.skillCategory, flatMixed: opts.flatMixed, count: opts.count }));
     } catch (e: any) {
       setError(e.message ?? "Could not start attempt.");
     } finally {

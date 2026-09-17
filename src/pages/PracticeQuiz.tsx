@@ -4,15 +4,21 @@ import type { Attempt, FaaArea } from "../lib/types";
 import { FAA_AREA_LABELS } from "../lib/types";
 import { PUBLISHED_QUESTIONS, ALL_QUESTIONS } from "../lib/questionBank";
 import { useAttemptController } from "../lib/useAttemptController";
+import { completionMessage } from "../lib/motivation";
 import AttemptRunner from "../components/AttemptRunner";
 
 const AREAS = Object.keys(FAA_AREA_LABELS) as FaaArea[];
+const LENGTH_OPTIONS = [10, 20, 30, 40, 50] as const;
 
 export default function PracticeQuiz() {
   const navigate = useNavigate();
-  const [count, setCount] = useState<10 | 20 | 30>(10);
+  const [count, setCount] = useState<number>(10);
+  const [customCount, setCustomCount] = useState<string>("");
+  const [useCustom, setUseCustom] = useState(false);
   const [area, setArea] = useState<FaaArea | "mixed">("mixed");
   const { attempt, begin, select, submit, busy, error } = useAttemptController();
+
+  const effectiveCount = useCustom ? Math.max(1, Math.min(400, Number(customCount) || 0)) : count;
 
   function retryMissed(finished: Attempt) {
     const missedIds = finished.questionIds.filter((id) => finished.answers[id]?.choiceId !== ALL_QUESTIONS.find((q) => q.id === id)?.correctChoiceId);
@@ -33,15 +39,19 @@ export default function PracticeQuiz() {
   }
 
   if (attempt?.finalized) {
+    const percent = attempt.score?.percent ?? 0;
     return (
       <div>
         <h1>Practice Quiz results</h1>
         <p style={{ color: "var(--slate-500)" }}>This attempt does not count toward readiness.</p>
         <div className="card" style={{ marginBottom: 16 }}>
           <p style={{ fontSize: "1.4rem", fontWeight: 700, margin: 0 }}>
-            {attempt.score?.correct}/{attempt.score?.total} ({attempt.score?.percent}%)
+            {attempt.score?.correct}/{attempt.score?.total} ({percent}%)
           </p>
         </div>
+        <p className="card" style={{ background: "var(--navy-100)", marginBottom: 16 }}>
+          {completionMessage(percent, "practice")}
+        </p>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <button className="btn btn-primary" onClick={() => retryMissed(attempt)}>
             Retry missed questions
@@ -61,21 +71,51 @@ export default function PracticeQuiz() {
     return (
       <div>
         <h1>Practice Quiz</h1>
-        <p>Choose a length and a subject. Results show after you submit. These attempts don't count toward readiness.</p>
+        <p>
+          Choose a category (or all of them, weighted to match the current exam blueprint) and a length. Results
+          show after you submit. These attempts don't count toward readiness.
+        </p>
         {error && <p style={{ color: "var(--danger-700)" }}>{error}</p>}
         <div className="card" style={{ maxWidth: 420 }}>
           <label style={{ display: "block", marginBottom: 12 }}>
             Number of questions
-            <select value={count} onChange={(e) => setCount(Number(e.target.value) as 10 | 20 | 30)} style={{ display: "block", marginTop: 4, width: "100%", padding: 8 }}>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={30}>30</option>
+            <select
+              value={useCustom ? "custom" : count}
+              onChange={(e) => {
+                if (e.target.value === "custom") setUseCustom(true);
+                else {
+                  setUseCustom(false);
+                  setCount(Number(e.target.value));
+                }
+              }}
+              style={{ display: "block", marginTop: 4, width: "100%", padding: 8 }}
+            >
+              {LENGTH_OPTIONS.map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
+              <option value="custom">Custom...</option>
             </select>
           </label>
+          {useCustom && (
+            <label style={{ display: "block", marginBottom: 12 }}>
+              Custom length
+              <input
+                type="number"
+                min={1}
+                max={400}
+                value={customCount}
+                onChange={(e) => setCustomCount(e.target.value)}
+                placeholder="e.g. 15"
+                style={{ display: "block", marginTop: 4, width: "100%", padding: 8, border: "1px solid var(--line)", borderRadius: 6 }}
+              />
+            </label>
+          )}
           <label style={{ display: "block", marginBottom: 16 }}>
             Subject
             <select value={area} onChange={(e) => setArea(e.target.value as FaaArea | "mixed")} style={{ display: "block", marginTop: 4, width: "100%", padding: 8 }}>
-              <option value="mixed">Balanced mixed quiz</option>
+              <option value="mixed">All categories (blueprint-weighted)</option>
               {AREAS.map((a) => (
                 <option key={a} value={a}>
                   {FAA_AREA_LABELS[a]}
@@ -83,7 +123,11 @@ export default function PracticeQuiz() {
               ))}
             </select>
           </label>
-          <button className="btn btn-primary" disabled={busy} onClick={() => begin({ mode: "practice", areaFilter: area, count, pool: PUBLISHED_QUESTIONS })}>
+          <button
+            className="btn btn-primary"
+            disabled={busy || (useCustom && effectiveCount < 1)}
+            onClick={() => begin({ mode: "practice", areaFilter: area, count: effectiveCount, pool: PUBLISHED_QUESTIONS })}
+          >
             Start quiz
           </button>
         </div>
@@ -98,7 +142,7 @@ export default function PracticeQuiz() {
         attempt={attempt}
         onSelect={select}
         onSubmit={submit}
-        showFeedbackImmediately={false}
+        showFeedbackImmediately={true}
         showNavigator={false}
         showTools={false}
       />

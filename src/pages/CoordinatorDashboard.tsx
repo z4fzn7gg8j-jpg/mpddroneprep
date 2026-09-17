@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { loadAttempts, getDemoOfficer, isDemoMode } from "../lib/storage";
+import { loadAttempts, getDemoOfficer, isDemoMode, deleteAttempt } from "../lib/storage";
 import { ALL_QUESTIONS as QUESTIONS, bankCounts } from "../lib/questionBank";
 import { computeReadiness } from "../lib/readiness";
 import { FAA_AREA_LABELS, type FaaArea, type Attempt } from "../lib/types";
 import ReadinessBadge from "../components/ReadinessBadge";
 import { Link } from "react-router-dom";
 import { useAuth } from "../lib/auth";
-import { listAllAttemptsForCoordinator } from "../lib/remoteAttempts";
+import { listAllAttemptsForCoordinator, deleteAttemptRemote } from "../lib/remoteAttempts";
 
 function toCsv(rows: string[][]): string {
   return rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
@@ -108,6 +108,23 @@ export default function CoordinatorDashboard() {
       setLoading(false);
     }
   }, [demo, officerId, officerRole]);
+
+  async function handleDeleteAttempt(attemptId: string) {
+    if (!confirm("Delete this attempt? This can't be undone.")) return;
+    if (demo) {
+      deleteAttempt(attemptId);
+    } else {
+      try {
+        await deleteAttemptRemote(attemptId);
+      } catch (e: any) {
+        alert(e.message ?? "Could not delete attempt.");
+        return;
+      }
+    }
+    setOfficerStats((prev) =>
+      prev.map((o) => ({ ...o, attempts: o.attempts.filter((a) => a.id !== attemptId) }))
+    );
+  }
 
   if (!demo && loading) return <p>Loading...</p>;
 
@@ -243,7 +260,7 @@ export default function CoordinatorDashboard() {
                             ) : (
                               <table>
                                 <thead>
-                                  <tr><th>Date</th><th>Mode</th><th>Score</th><th></th></tr>
+                                  <tr><th>Date</th><th>Mode</th><th>Score</th><th></th><th></th></tr>
                                 </thead>
                                 <tbody>
                                   {o.attempts
@@ -256,6 +273,17 @@ export default function CoordinatorDashboard() {
                                         <td>{a.mode}</td>
                                         <td>{a.score?.correct}/{a.score?.total} ({a.score?.percent}%)</td>
                                         <td><Link to={`/results/${a.id}`}>View</Link></td>
+                                        <td>
+                                          <button
+                                            type="button"
+                                            onClick={() => handleDeleteAttempt(a.id)}
+                                            aria-label="Delete this attempt"
+                                            title="Delete this attempt"
+                                            style={{ background: "none", border: "none", color: "var(--danger-700)", cursor: "pointer", fontSize: "1rem", padding: "0 6px" }}
+                                          >
+                                            &times;
+                                          </button>
+                                        </td>
                                       </tr>
                                     ))}
                                 </tbody>

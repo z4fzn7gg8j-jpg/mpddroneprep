@@ -1,0 +1,2087 @@
+{
+  "project": "MPD107",
+  "content_version": "1.0",
+  "created_for": "Map & Chart Reading study course",
+  "purpose": "Teach the visual and decoding skills behind the Part 107 question bank before students enter topic practice or a mixed mastery test.",
+  "important_2026_test_note": "FAA's September 2026 Special Edition ATCA corrected the implementation date: beginning October 26, 2026, UAG tests may include image-based questions not found in FAA-CT-8080-2H. Supplement figures should therefore be used as teaching examples, not memorization targets.",
+  "course_flow": [
+    "Study lesson",
+    "Visual worked examples",
+    "Quick knowledge check",
+    "Practice this topic from existing question bank",
+    "Mastery check across mixed visual topics"
+  ],
+  "question_bank_mapping": {
+    "original_categories": {
+      "Airport Symbols, Frequencies & Traffic Patterns": 24,
+      "Special-Use Airspace (MOA/Restricted/Routes)": 11,
+      "Obstacles, Terrain & Elevation (includes MSL/AGL conversion)": 14,
+      "Class E Airspace": 9,
+      "Class D Airspace": 9,
+      "Class B Airspace": 9,
+      "Airspace Boundaries & Authorization (includes NOTAMs)": 10,
+      "Lat/Long & Coordinates": 7,
+      "Class C Airspace": 7,
+      "METAR": 8,
+      "TAF": 6,
+      "Load Factor Chart": 6,
+      "General Chart Reading": 10
+    },
+    "lesson_count": 14,
+    "note": "The teaching course intentionally has 14 lessons even though the bank has 13 buttons. Foundational airspace concepts are separated so a new aviation learner understands the 3D model before individual B/C/D/E lessons. Existing bank tags do not need to change."
+  },
+  "sources": {
+    "faa_supplement": {
+      "title": "FAA-CT-8080-2H Airman Knowledge Testing Supplement for Sport Pilot, Recreational Pilot, Remote Pilot, and Private Pilot",
+      "url": "https://www.faa.gov/training_testing/testing/supplements",
+      "note": "Use the official FAA supplement as the source for figure images and legends. Figures 20-26 are especially useful for sectional-chart training; Figure 12 contains METAR examples; Figure 15 contains TAF examples; Figure 2 is the load-factor chart."
+    },
+    "faa_remote_pilot_study_guide": {
+      "title": "Remote Pilot - Small Unmanned Aircraft Systems Study Guide (FAA-G-8082-22)",
+      "url": "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/remote_pilot_study_guide.pdf"
+    },
+    "faa_chart_users_guide": {
+      "title": "FAA Aeronautical Chart Users' Guide",
+      "url": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/aero_guide/",
+      "note": "Use this as the current symbology authority. The study supplement contains historical chart excerpts, while the test will increasingly use current chart images."
+    },
+    "faa_testing_update": {
+      "title": "September 2026 Special Edition - Airman Testing Community Advisory",
+      "url": "https://www.faa.gov/training_testing/testing/September_2026_Special_Edition.pdf",
+      "note": "Beginning October 26, 2026, UAG tests include image-based questions that may not appear in the testing supplement. Train chart-reading skills, not memorization of a specific figure."
+    },
+    "faa_airspace_authorization": {
+      "title": "FAA Order guidance - Part 107 airspace authorization",
+      "url": "https://www.faa.gov/air_traffic/publications/atpubs/foa_html/chap19_section_6.html",
+      "note": "For Part 107, authorization is required in Class B, C, D, and within the lateral boundaries of Class E surface areas designated for an airport."
+    }
+  },
+  "lessons": [
+    {
+      "id": "chart-foundations",
+      "title": "1. Sectional Chart Foundations: How to Read the Page Before Solving the Question",
+      "question_bank_categories": [
+        "General Chart Reading",
+        "Airport Symbols, Frequencies & Traffic Patterns",
+        "Airspace Boundaries & Authorization"
+      ],
+      "estimated_minutes": 18,
+      "learning_objectives": [
+        "Understand what a VFR sectional chart is and why the FAA uses it on the Part 107 exam.",
+        "Use the legend instead of guessing at unfamiliar symbols.",
+        "Separate topographic information from aeronautical information.",
+        "Read chart colors, boundary styles, labels, and altitude annotations in a repeatable order.",
+        "Develop a scan routine that transfers to unfamiliar current chart images after October 26, 2026."
+      ],
+      "supplement_references": [
+        {
+          "reference": "FAA-CT-8080-2H Legend 1",
+          "use": "Primary symbol key for airports, airspace, obstructions, and airport data."
+        },
+        {
+          "reference": "Figures 20-26",
+          "use": "Use several different sectional excerpts so students do not memorize one chart."
+        },
+        {
+          "reference": "September 2026 ATCA UAG sample images",
+          "use": "Show that the modern exam can embed current chart images not found in the supplement."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "What a sectional chart is",
+          "body": "A sectional is a visual map of the National Airspace System for VFR pilots. It combines ordinary map information - terrain, towns, roads, water and elevations - with aviation information such as airports, airspace boundaries, obstructions, radio frequencies and special-use airspace. For Part 107, the goal is not to become a manned-aircraft navigator. The goal is to be able to look at a chart excerpt, identify the relevant symbol or boundary, translate its notation, and apply the Part 107 rule that the question is testing."
+        },
+        {
+          "heading": "Use a five-step scan",
+          "body": "For every chart question use the same sequence: (1) read exactly what the question asks; (2) locate the figure and Area callout; (3) identify the visual feature - airport, line, obstacle, frequency, altitude or coordinate; (4) decode it with the legend; and only then (5) apply the rule. This prevents a common error: solving the aviation rule correctly while looking at the wrong symbol or wrong shelf."
+        },
+        {
+          "heading": "MSL is the chart default",
+          "body": "Unless a chart specifically tells you otherwise, altitudes on FAA charts are normally in feet MSL. AGL values are usually identified by context or parentheses. Do not mentally convert every number to AGL. First determine what the number represents. This one habit makes later airspace, obstacle and elevation questions much easier."
+        },
+        {
+          "heading": "Colors are clues, not complete answers",
+          "body": "Blue and magenta repeatedly appear in airport and airspace symbology. For example, towered airports are normally shown in blue and non-towered airports in magenta; Class B uses solid blue boundaries, Class C solid magenta, Class D dashed blue, and Class E surface areas dashed magenta. But never answer solely from color. Confirm the line style, label and local context."
+        },
+        {
+          "heading": "The legend is part of the skill",
+          "body": "The FAA does not expect every obscure symbol to be memorized. A strong remote pilot knows how to use the chart legend quickly. During training, require the student to identify the symbol in the legend before revealing the answer. Over time the common symbols will become automatic."
+        },
+        {
+          "heading": "Train for the 2026 testing change",
+          "body": "The FAA announced that beginning October 26, 2026, the UAG exam may present chart images that are not in FAA-CT-8080-2H. Therefore MPD107 should use Figures 20-26 as training examples but deliberately vary the figure from question to question. The objective is transferable chart literacy, not recognition of a remembered screenshot."
+        }
+      ],
+      "visual_drills": [
+        "Open Legend 1 and have the student find the symbols for a towered airport, a non-towered airport, an obstruction, Class B, Class C, Class D, and Class E surface airspace.",
+        "Open Figure 20, then Figure 25. Ask the student to point to three different types of aeronautical information before asking any question about them.",
+        "Show the September 2026 FAA UAG sample image for Millville and ask the student to identify the dashed magenta boundary without first telling them what it means."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A chart question asks, 'What airspace overlies this airport?' What should you do first after opening the correct figure?",
+          "steps": [
+            "Find the Area callout or named airport.",
+            "Identify the boundary line around the airport.",
+            "Use line color/style and labels to classify the airspace.",
+            "Then apply any authorization rule if the question asks for one."
+          ],
+          "answer": "Identify the chart feature first; do not jump directly to a memorized airspace rule."
+        },
+        {
+          "prompt": "You see a large blue number in a quadrangle and a small airport elevation nearby. Are they the same type of information?",
+          "steps": [
+            "The large quadrangle number is a Maximum Elevation Figure (MEF).",
+            "The airport elevation belongs to the airport data.",
+            "Both may be MSL, but they describe different things."
+          ],
+          "answer": "No. Similar-looking numbers can serve completely different purposes."
+        }
+      ],
+      "common_test_traps": [
+        "Reading the answer choices first and then hunting for a matching number without understanding what the number represents.",
+        "Assuming every blue item is controlled airspace or every magenta item is uncontrolled airspace.",
+        "Treating a historical supplement chart as current flight-planning data. Use current FAA charts for real operations.",
+        "Memorizing the location of an answer in Figure 20 instead of learning the line style or symbol."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Which habit is best when you encounter an unfamiliar sectional-chart symbol?",
+          "choices": [
+            "Guess from its color",
+            "Look it up in the chart legend",
+            "Assume it is an airport",
+            "Ignore it if it is not near an airport"
+          ],
+          "answer": 1,
+          "explanation": "The legend is the authoritative key for sectional symbols."
+        },
+        {
+          "q": "Unless otherwise indicated, chart altitudes are generally referenced to what datum?",
+          "choices": [
+            "AGL",
+            "MSL",
+            "Runway elevation only",
+            "Pressure altitude"
+          ],
+          "answer": 1,
+          "explanation": "FAA chart altitudes are generally in feet MSL unless another reference is specified."
+        },
+        {
+          "q": "Why should MPD107 rotate among several sectional figures during practice?",
+          "choices": [
+            "To make the questions longer",
+            "Because the UAG test can use current images not in the supplement",
+            "Because Figure 20 is no longer legal",
+            "Because sectional charts have no legend"
+          ],
+          "answer": 1,
+          "explanation": "The FAA's September 2026 advisory says UAG will include image-based questions not found in the supplement beginning October 26, 2026."
+        },
+        {
+          "q": "Which sequence is best?",
+          "choices": [
+            "Apply rule, guess symbol, find area",
+            "Find area, identify symbol, decode symbol, apply rule",
+            "Memorize answer, find matching number",
+            "Find highest number, choose it"
+          ],
+          "answer": 1,
+          "explanation": "A consistent scan routine prevents wrong-feature errors."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "Part 107 Exam SECTIONAL CHARTS Explained VFR | Study Guide 2 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=yEu8pgegaBI",
+          "use": "Sectional chart basics, airports, airport data, Class D, obstruction introduction."
+        },
+        {
+          "title": "PART 107 Exam SECTIONAL CHART SYMBOLS | Study Guide 11 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=9u2c2ojoQ8k",
+          "use": "Legend practice, Class E vignettes, obstacles, restricted areas, Class D ceilings."
+        }
+      ],
+      "mastery_standard": "Student can correctly identify the relevant feature and legend entry on at least 4 of 5 mixed chart prompts.",
+      "instructor_note": "Do not let the learner advance by memorizing answers. Ask them to physically describe the symbol or boundary that led them to the answer."
+    },
+    {
+      "id": "latitude-longitude",
+      "title": "2. Latitude & Longitude: Finding a Point Without Guessing",
+      "question_bank_categories": [
+        "Lat/Long & Coordinates",
+        "General Chart Reading"
+      ],
+      "estimated_minutes": 20,
+      "learning_objectives": [
+        "Explain latitude and longitude using the Equator and Prime Meridian as reference lines.",
+        "Read coordinates in degrees, minutes, and seconds.",
+        "Determine north/south and east/west correctly.",
+        "Interpolate between labeled chart ticks without assuming each visible mark represents a fixed number of seconds.",
+        "Use FAA supplement Figures 20, 21, and 26 to identify airports or points from coordinates."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 20, Area 3",
+          "use": "Latitude/longitude practice around the Norfolk/Elizabeth City chart excerpt."
+        },
+        {
+          "reference": "Figure 21",
+          "use": "Locate an airport from a coordinate in the North Dakota excerpt; commonly used for latitude/longitude practice."
+        },
+        {
+          "reference": "Figure 26, Area 4",
+          "use": "Use a labeled line of latitude to reinforce that latitude measures north/south of the Equator."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "The two reference lines",
+          "body": "Latitude measures how far north or south a point is from the Equator. Longitude measures how far east or west a point is from the Prime Meridian through Greenwich, England. In the continental United States you will normally see N latitude and W longitude. Coordinates are normally stated latitude first, then longitude."
+        },
+        {
+          "heading": "Degrees, minutes, seconds",
+          "body": "One degree contains 60 minutes, and one minute contains 60 seconds. The symbols are degree (°), minute ('), and second (\"). A coordinate such as 47°40'30\"N means 47 degrees, 40 minutes, 30 seconds north. Do not treat decimal digits or chart tick marks as if they were base-10 time; aviation coordinates use base 60."
+        },
+        {
+          "heading": "How to read the chart grid",
+          "body": "Start with the nearest labeled latitude line and longitude line. Determine which direction the values increase. Then interpolate between labeled marks. Do not assume that because you see ten small hash marks, each must equal six seconds. The spacing and subdivision shown on a particular chart excerpt may vary. Read the labeled endpoints and divide the interval represented by those labels."
+        },
+        {
+          "heading": "A reliable visual method",
+          "body": "For latitude, imagine moving horizontally across the chart while watching the numbers on the side border or nearby graticule. For longitude, imagine moving vertically while watching the numbers along the top or bottom. When searching for a coordinate, locate the latitude first and trace across; locate the longitude second and trace up/down. The intersection is the target."
+        },
+        {
+          "heading": "Exam precision",
+          "body": "Most Part 107 coordinate questions ask for an approximate location or ask which airport lies near a given coordinate. You usually do not need survey-grade precision. You do need to distinguish adjacent airports and avoid reversing latitude and longitude."
+        }
+      ],
+      "visual_drills": [
+        "On Figure 21, have the student identify the nearest whole-degree and minute labels before searching for an airport.",
+        "On Figure 20 Area 3, choose a known airport and have the student estimate its latitude and longitude before showing answer choices.",
+        "On Figure 26 Area 4, ask the student whether a labeled horizontal graticule is latitude or longitude and why."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A question asks for the airport near 47°40'N, 101°26'W on Figure 21. How do you attack it?",
+          "steps": [
+            "Find 47° latitude and move to approximately 40 minutes north.",
+            "Find 101° longitude and move to approximately 26 minutes west.",
+            "Trace the two positions to their intersection.",
+            "Identify the airport symbol/name nearest that intersection."
+          ],
+          "answer": "Use the coordinate intersection; do not search airport names first."
+        },
+        {
+          "prompt": "You are halfway between 47°40' and 47°41'. What is the approximate latitude?",
+          "steps": [
+            "The interval is one minute = 60 seconds.",
+            "Half of 60 seconds is 30 seconds."
+          ],
+          "answer": "Approximately 47°40'30\"."
+        }
+      ],
+      "common_test_traps": [
+        "Reversing latitude and longitude.",
+        "Thinking longitude is north/south because the longitude lines themselves run north/south; longitude actually measures east/west from the Prime Meridian.",
+        "Treating 0.5 minute as 5 seconds. Half a minute is 30 seconds.",
+        "Counting hash marks without first determining what interval the labeled marks represent."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Latitude is measured from which reference?",
+          "choices": [
+            "Prime Meridian",
+            "Equator",
+            "International Date Line",
+            "Magnetic north"
+          ],
+          "answer": 1,
+          "explanation": "Latitude is angular distance north or south of the Equator."
+        },
+        {
+          "q": "Longitude is measured east or west from which reference?",
+          "choices": [
+            "Equator",
+            "Prime Meridian",
+            "North Pole",
+            "Local airport"
+          ],
+          "answer": 1,
+          "explanation": "Longitude is measured from the Prime Meridian."
+        },
+        {
+          "q": "How many seconds are in one minute of latitude or longitude?",
+          "choices": [
+            "10",
+            "60",
+            "100",
+            "360"
+          ],
+          "answer": 1,
+          "explanation": "A degree contains 60 minutes and each minute contains 60 seconds."
+        },
+        {
+          "q": "A point halfway between 32°10' and 32°11' is approximately what?",
+          "choices": [
+            "32°10'05\"",
+            "32°10'30\"",
+            "32°10'50\"",
+            "32°11'30\""
+          ],
+          "answer": 1,
+          "explanation": "Half of a 60-second minute is 30 seconds."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "Part 107 Test Prep: Latitude and Longitude on Sectional Charts",
+          "channel": "Olga Andreeva",
+          "url": "https://www.youtube.com/watch?v=qTbqgWR5wmM",
+          "use": "Works directly with FAA supplement Figures 20 and 21 and teaches latitude/longitude interpolation."
+        }
+      ],
+      "mastery_standard": "Student can locate or estimate 4 of 5 coordinates on unfamiliar chart excerpts within the precision needed to distinguish nearby features.",
+      "instructor_note": "Require the student to state latitude first and longitude second out loud during early practice."
+    },
+    {
+      "id": "elevation-obstacles",
+      "title": "3. MSL, AGL, Terrain, Obstacles & Maximum Elevation Figures",
+      "question_bank_categories": [
+        "Obstacles, Terrain & Elevation (includes MSL/AGL conversion)",
+        "General Chart Reading"
+      ],
+      "estimated_minutes": 22,
+      "learning_objectives": [
+        "Distinguish MSL from AGL in plain language.",
+        "Convert between MSL and AGL when terrain or airport elevation is known.",
+        "Read obstacle labels with MSL height and AGL height.",
+        "Recognize lighted/grouped obstruction symbols using the legend.",
+        "Interpret Maximum Elevation Figures without treating them as legal minimum altitudes."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 20, Area 2",
+          "use": "Airport elevation practice at Chesapeake Regional (CPK)."
+        },
+        {
+          "reference": "Figure 22, Area 1",
+          "use": "Maximum Elevation Figure practice near Sandpoint."
+        },
+        {
+          "reference": "Figure 24, Area 3",
+          "use": "Obstacle-height practice using a lighted obstruction; pair with the legend."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Obstacle and group-obstacle symbology."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "MSL versus AGL",
+          "body": "MSL is height above mean sea level. AGL is height above the ground directly below the object or aircraft. Sectional charts use MSL heavily because every feature needs a common vertical reference. Drone pilots often think operationally in AGL, so many exam questions force a conversion."
+        },
+        {
+          "heading": "The conversion",
+          "body": "If an object is 1,600 feet MSL and the ground beneath it is 900 feet MSL, the object is 700 feet AGL. Formula: AGL = object MSL - ground MSL. Going the other way, object MSL = ground MSL + object AGL. Keep the units visible in your scratch work so you do not add when you should subtract."
+        },
+        {
+          "heading": "Obstacle labels",
+          "body": "A charted obstruction commonly shows two elevations: the top number is the elevation of the obstruction top in MSL; the number in parentheses is the obstacle height AGL. For example, 2049 (749) means the top is 2,049 feet MSL and the structure rises 749 feet above its local ground. The difference implies terrain near 1,300 feet MSL."
+        },
+        {
+          "heading": "Airport elevation",
+          "body": "Airport data includes field elevation in MSL. This is especially useful when a question gives an airspace ceiling in MSL but asks how high that ceiling is above the airport. Airport elevation is not runway length and is not an obstacle height."
+        },
+        {
+          "heading": "Maximum Elevation Figure",
+          "body": "A Maximum Elevation Figure (MEF) is the large blue number placed in a chart quadrangle. It represents the highest elevation in that quadrangle after the FAA applies its charting clearance/rounding methodology. For the exam, read the number as hundreds of feet MSL: 71 means 7,100 feet MSL. It is a situational-awareness value, not a Part 107 authorization altitude and not a guarantee that you can legally fly to that altitude."
+        }
+      ],
+      "visual_drills": [
+        "On Figure 24 Area 3, locate a charted obstruction and have the student identify which number is MSL and which is AGL.",
+        "On Figure 22 Area 1, locate the MEF and translate the two-digit value into feet MSL.",
+        "Give the student a terrain elevation and obstacle-top MSL and require a written AGL calculation."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "An obstacle is charted as 2049 (749). What does that mean?",
+          "steps": [
+            "Read 2049 as the obstacle top elevation in feet MSL.",
+            "Read (749) as the obstacle height in feet AGL.",
+            "If asked for approximate ground elevation: 2049 - 749 = 1300 feet MSL."
+          ],
+          "answer": "Top 2,049 MSL; height 749 AGL; local ground about 1,300 MSL."
+        },
+        {
+          "prompt": "A Class D ceiling is 4,200 feet MSL and the airport elevation is 1,716 feet MSL. About how high is the ceiling above the airport?",
+          "steps": [
+            "Use AGL = ceiling MSL - field elevation MSL.",
+            "4,200 - 1,716 = 2,484."
+          ],
+          "answer": "Approximately 2,484 feet AGL above airport elevation."
+        }
+      ],
+      "common_test_traps": [
+        "Choosing the parenthetical obstacle number when the question asks for MSL.",
+        "Adding terrain elevation when the question asks for AGL; AGL normally requires subtraction from an MSL top elevation.",
+        "Reading MEF 71 as 710 feet instead of 7,100 feet.",
+        "Treating the MEF as the maximum legal drone altitude."
+      ],
+      "knowledge_check": [
+        {
+          "q": "An obstacle label reads 1549 (349). What is 349?",
+          "choices": [
+            "Obstacle top MSL",
+            "Obstacle height AGL",
+            "Airport elevation",
+            "MEF"
+          ],
+          "answer": 1,
+          "explanation": "The parenthetical value is the obstruction height above ground level."
+        },
+        {
+          "q": "Ground elevation is 1,200 MSL and the top of a tower is 1,850 MSL. Tower height AGL is approximately?",
+          "choices": [
+            "650 ft",
+            "1,200 ft",
+            "1,850 ft",
+            "3,050 ft"
+          ],
+          "answer": 0,
+          "explanation": "1,850 - 1,200 = 650 feet AGL."
+        },
+        {
+          "q": "An MEF shown as 71 represents approximately?",
+          "choices": [
+            "71 ft MSL",
+            "710 ft MSL",
+            "7,100 ft MSL",
+            "71,000 ft MSL"
+          ],
+          "answer": 2,
+          "explanation": "MEF figures are read in hundreds of feet MSL."
+        },
+        {
+          "q": "Which value should normally be subtracted from an MSL airspace ceiling to find approximate height above the airport?",
+          "choices": [
+            "Runway length",
+            "Airport elevation MSL",
+            "CTAF frequency",
+            "MEF"
+          ],
+          "answer": 1,
+          "explanation": "Airspace ceiling MSL minus field elevation MSL yields approximate height above the airport."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "Part 107 Test Prep: Obstructions and Airport Elevations on Sectional Charts",
+          "channel": "Olga Andreeva",
+          "url": "https://www.youtube.com/watch?v=UY4LYGoqfvc",
+          "use": "Obstacle symbols, MSL versus AGL, airport elevation, supplement-based worked examples."
+        },
+        {
+          "title": "SECTIONAL CHARTS ADVANCED Part 107 | Remote Pilot Study Guide 9 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=aYGixD3Z6yI",
+          "use": "Advanced chart symbology, airport frequencies, special-use airspace, MEF, obstructions."
+        }
+      ],
+      "mastery_standard": "Student correctly distinguishes MSL/AGL and completes 4 of 5 elevation/obstacle conversions without prompting.",
+      "instructor_note": "Make the learner write the units (MSL or AGL) beside every number until the concept is automatic."
+    },
+    {
+      "id": "airport-data",
+      "title": "4. Airport Symbols, Frequencies & Traffic Patterns",
+      "question_bank_categories": [
+        "Airport Symbols, Frequencies & Traffic Patterns",
+        "General Chart Reading"
+      ],
+      "estimated_minutes": 24,
+      "learning_objectives": [
+        "Differentiate towered and non-towered airport depictions.",
+        "Read airport identifiers, field elevation, runway information, lighting cues and radio-frequency labels.",
+        "Distinguish CTAF, tower/CT, UNICOM and AWOS/ASOS weather frequencies.",
+        "Use the Chart Supplement when a sectional does not provide enough airport-operating detail.",
+        "Recognize common traps where a weather frequency is offered as a traffic frequency."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 21, Area 1",
+          "use": "Minot International airport data and tower/CT frequency practice."
+        },
+        {
+          "reference": "Figure 22, Area 2",
+          "use": "Coeur d'Alene CTAF and AWOS practice."
+        },
+        {
+          "reference": "Figure 25, Areas 2-3",
+          "use": "Dallas-area tower and CTAF practice."
+        },
+        {
+          "reference": "September 2026 ATCA UAG sample - Grand Canyon NTL Park (GCN)",
+          "use": "Current-style embedded-image example asking for CTAF when the tower is closed."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Airport color and basic symbol",
+          "body": "On sectionals, airports with operating control towers are normally depicted in blue; non-towered airports are normally magenta. Runway layout may be drawn inside the symbol when the airport meets charting criteria. Use the legend to confirm private, seaplane, heliport, abandoned-airport, and other specialized symbols."
+        },
+        {
+          "heading": "Read the airport data block",
+          "body": "Airport information commonly includes the airport name/identifier, communications, field elevation, lighting, and runway data. The exact presentation depends on the chart and airport. Your job is to identify what each number belongs to rather than selecting the first frequency you see."
+        },
+        {
+          "heading": "CTAF versus weather",
+          "body": "CTAF is the frequency pilots use to monitor or announce traffic at a non-towered airport, or at some airports when the tower is closed. A tower frequency may also serve as the CTAF when the tower is closed. AWOS and ASOS frequencies broadcast automated weather; they are not the traffic advisory frequency. UNICOM may support airport advisory communications and may also be the CTAF at some airports. The chart/Chart Supplement tells you which applies."
+        },
+        {
+          "heading": "Towered airport questions",
+          "body": "If the chart data includes CT followed by a frequency, CT identifies the control-tower frequency. A Part 107 pilot normally obtains airspace authorization through LAANC or DroneZone rather than calling the tower for authorization; however, the exam may ask which frequency could be monitored for manned-aircraft/ATC traffic."
+        },
+        {
+          "heading": "Traffic pattern information",
+          "body": "Detailed traffic-pattern restrictions, right traffic, noise-abatement notes, runway information and operating hours may require the Chart Supplement rather than the sectional alone. Learn to recognize when the chart gives the answer and when the correct reference is another FAA publication."
+        }
+      ],
+      "visual_drills": [
+        "Figure 22 Area 2: identify every frequency near Coeur d'Alene and label each as weather, CTAF/UNICOM, or other.",
+        "Figure 21 Area 1: locate Minot's CT frequency and airport elevation.",
+        "Use the September 2026 Grand Canyon sample and ask why 119.0 is the CTAF answer instead of 124.3 or 122.95."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "At Coeur d'Alene, the choices are 122.05, 122.8, and 135.075 for CTAF. How should you reason?",
+          "steps": [
+            "Locate the airport data block.",
+            "Identify the CTAF/UNICOM frequency rather than the AWOS weather frequency.",
+            "135.075 is weather (AWOS); 122.8 is the traffic frequency in the supplement example."
+          ],
+          "answer": "122.8 MHz."
+        },
+        {
+          "prompt": "The chart lists a tower frequency and an ASOS frequency. The question asks what to monitor for airport traffic when the tower is closed. Which type of frequency are you seeking?",
+          "steps": [
+            "You need CTAF, not weather.",
+            "Determine whether the tower frequency becomes the CTAF when closed by the chart/Chart Supplement."
+          ],
+          "answer": "The published CTAF; it may be the tower frequency when the tower is closed."
+        }
+      ],
+      "common_test_traps": [
+        "Picking AWOS/ASOS because it is the most prominent frequency near the airport.",
+        "Assuming every airport uses 122.8 as CTAF.",
+        "Calling ATC directly for routine Part 107 airspace authorization; authorization is handled through approved FAA processes such as LAANC/DroneZone.",
+        "Confusing airport elevation with runway length."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Which service primarily provides automated weather information?",
+          "choices": [
+            "CTAF",
+            "ASOS/AWOS",
+            "Runway lighting",
+            "MEF"
+          ],
+          "answer": 1,
+          "explanation": "ASOS/AWOS broadcasts weather observations."
+        },
+        {
+          "q": "A control tower frequency may also serve as what when the tower is closed, if so published?",
+          "choices": [
+            "MEF",
+            "CTAF",
+            "Longitude",
+            "MOA frequency"
+          ],
+          "answer": 1,
+          "explanation": "At some airports the tower frequency becomes the CTAF when the tower is not operating."
+        },
+        {
+          "q": "What source often contains detailed traffic-pattern restrictions and airport operating notes?",
+          "choices": [
+            "Chart Supplement",
+            "Load Factor Chart",
+            "METAR only",
+            "Latitude scale"
+          ],
+          "answer": 0,
+          "explanation": "The Chart Supplement provides detailed airport information not always shown on the sectional."
+        },
+        {
+          "q": "Towered airports on sectionals are normally shown in what color?",
+          "choices": [
+            "Blue",
+            "Magenta",
+            "Green",
+            "Orange"
+          ],
+          "answer": 0,
+          "explanation": "Blue commonly identifies airports with operating control towers; magenta normally identifies non-towered airports."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "Part 107 Exam SECTIONAL CHARTS Explained VFR | Study Guide 2 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=yEu8pgegaBI",
+          "use": "Sectional chart basics, airports, airport data, Class D, obstruction introduction."
+        },
+        {
+          "title": "SECTIONAL CHARTS ADVANCED Part 107 | Remote Pilot Study Guide 9 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=aYGixD3Z6yI",
+          "use": "Advanced chart symbology, airport frequencies, special-use airspace, MEF, obstructions."
+        }
+      ],
+      "mastery_standard": "Student can correctly identify CTAF/tower/weather frequencies and field elevation on 4 of 5 airport-data prompts.",
+      "instructor_note": "Force the learner to label the purpose of every frequency in the answer choices before selecting one."
+    },
+    {
+      "id": "airspace-big-picture",
+      "title": "5. Controlled vs. Uncontrolled Airspace: Build the 3D Picture First",
+      "question_bank_categories": [
+        "Airspace Boundaries & Authorization",
+        "General Chart Reading",
+        "Class E Airspace"
+      ],
+      "estimated_minutes": 20,
+      "learning_objectives": [
+        "Explain controlled and uncontrolled airspace in a Part 107 context.",
+        "Understand the surface-to-sky stack rather than treating airspace as flat circles.",
+        "Know that Class G is uncontrolled and Class E is controlled even when no Part 107 authorization is required.",
+        "Identify which controlled airspace classes trigger Part 107 authorization at the operating location.",
+        "Avoid confusing airspace classification with legal drone altitude limits."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figures 20-26",
+          "use": "Use mixed examples to identify the airspace touching the surface and the airspace above it."
+        },
+        {
+          "reference": "September 2026 ATCA Millville UAG sample",
+          "use": "Shows a Class E surface area where authorization is required."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Boundary styles for B/C/D/E."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Think in layers",
+          "body": "Airspace is three-dimensional. Two aircraft directly above the same spot can be in different classes because one is below a shelf and one is inside it. For drone questions, always ask: what class of airspace exists at the altitude where the drone will actually operate? A Class B shelf beginning at 3,000 MSL does not automatically make the surface Class B."
+        },
+        {
+          "heading": "Controlled does not always mean authorization",
+          "body": "Class B, C, D and E are controlled airspace; Class G is uncontrolled. For Part 107, prior ATC authorization is required in Class B, Class C, Class D, and within the lateral boundaries of a Class E surface area designated for an airport. A 700-foot or 1,200-foot Class E transition area above the surface usually leaves Class G below it, and a typical Part 107 flight at 400 feet AGL may therefore be in Class G even though Class E is overhead."
+        },
+        {
+          "heading": "Class A is not a normal drone operating environment",
+          "body": "Class A generally begins at 18,000 feet MSL and is far above ordinary Part 107 operations. Know that it exists, but map-heavy Part 107 questions focus far more on B, C, D, E and G near airports."
+        },
+        {
+          "heading": "Authorization is not the same as permission from an airport",
+          "body": "The exam may ask whether authorization is needed based on airspace. Answer based on the classification and Part 107 rule. Do not confuse ATC airspace authorization with permission to take off from property, local site access, TFR restrictions, or other separate requirements."
+        },
+        {
+          "heading": "The surface test",
+          "body": "A fast technique is to identify the boundary touching your point at the surface. Solid blue touching the surface may be Class B; solid magenta may be Class C; dashed blue Class D; dashed magenta Class E surface. If none of those surface areas applies, determine whether the area is Class G at the surface with Class E beginning at 700/1,200 AGL or another depicted altitude."
+        }
+      ],
+      "visual_drills": [
+        "For a point under a Class B shelf in Figure 25, ask the class at 100 feet AGL and then at an altitude inside the shelf.",
+        "Use the Millville sample to show dashed magenta Class E surface airspace and compare it with a magenta vignette 700-foot transition area.",
+        "Give three points: inside Class D, outside it under 700-foot Class E, and beneath a Class C shelf. Ask only 'what airspace at 200 AGL?'"
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A location has Class E beginning at 700 feet AGL and no surface-area boundary. What airspace is a drone in at 300 feet AGL?",
+          "steps": [
+            "Class E begins at 700 AGL.",
+            "Below that, no other controlled surface area is depicted.",
+            "The surface layer is Class G."
+          ],
+          "answer": "Class G."
+        },
+        {
+          "prompt": "A dashed magenta boundary encloses the airport and the question asks whether authorization is required for a 100-foot AGL operation inside it.",
+          "steps": [
+            "Dashed magenta indicates Class E surface airspace.",
+            "If it is the airport-designated Class E surface area, Part 107.41 authorization is required within its lateral boundaries."
+          ],
+          "answer": "Yes, authorization is required for the airport-designated Class E surface area."
+        }
+      ],
+      "common_test_traps": [
+        "Thinking 'Class E = no authorization' in every situation. Airport-designated Class E surface areas are the key exception.",
+        "Thinking a Class B or C shelf automatically controls the surface below the shelf.",
+        "Assuming Class G means there are no operating rules; Part 107 rules still apply.",
+        "Using the 400-foot Part 107 altitude rule to identify airspace class. Airspace classification and operating altitude are separate questions."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Which class is uncontrolled airspace?",
+          "choices": [
+            "Class B",
+            "Class D",
+            "Class E",
+            "Class G"
+          ],
+          "answer": 3,
+          "explanation": "Class G is uncontrolled airspace."
+        },
+        {
+          "q": "Class E begins at 700 AGL. At 200 AGL, with no other surface airspace present, the drone is in?",
+          "choices": [
+            "Class B",
+            "Class E",
+            "Class G",
+            "Class A"
+          ],
+          "answer": 2,
+          "explanation": "The Class E floor is 700 AGL, leaving Class G below."
+        },
+        {
+          "q": "Under Part 107, which Class E generally requires ATC authorization?",
+          "choices": [
+            "Every Class E area",
+            "Only Class E above FL600",
+            "The lateral boundaries of a Class E surface area designated for an airport",
+            "Only Class E at 700 AGL"
+          ],
+          "answer": 2,
+          "explanation": "FAA Part 107 airspace authorization applies to airport-designated Class E surface areas, not every Class E transition area."
+        },
+        {
+          "q": "A location is under a Class B shelf whose floor is 3,000 MSL. The ground is 500 MSL and the drone is at 300 AGL. Is the drone necessarily in Class B?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "answer": 1,
+          "explanation": "The drone is at about 800 MSL, below the 3,000 MSL Class B floor; another class applies below the shelf."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        },
+        {
+          "title": "PART 107 Exam SECTIONAL CHART SYMBOLS | Study Guide 11 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=9u2c2ojoQ8k",
+          "use": "Legend practice, Class E vignettes, obstacles, restricted areas, Class D ceilings."
+        }
+      ],
+      "mastery_standard": "Student can identify the airspace at a stated altitude for 4 of 5 layered examples and separately state whether Part 107 authorization is required.",
+      "instructor_note": "Always ask two separate questions: 'What class is it?' and 'Does Part 107 require authorization here?'"
+    },
+    {
+      "id": "class-b",
+      "title": "6. Class B Airspace: Solid Blue Shelves and Top/Bottom Numbers",
+      "question_bank_categories": [
+        "Class B Airspace",
+        "Airspace Boundaries & Authorization"
+      ],
+      "estimated_minutes": 17,
+      "learning_objectives": [
+        "Recognize Class B by solid blue boundaries.",
+        "Read Class B ceiling/floor fractions in hundreds of feet MSL.",
+        "Determine whether a point is below a shelf or inside Class B at a stated altitude.",
+        "Apply the Part 107 authorization requirement correctly.",
+        "Use Dallas/Fort Worth Figure 25 for repeated shelf-reading practice."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 25, Areas 3-4",
+          "use": "Primary Class B training image around Dallas/Fort Worth; use Dallas Executive and Alliance-area shelves."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Class B solid blue symbology and altitude notation."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Recognition",
+          "body": "Class B airspace surrounds the nation's busiest airports and is depicted with solid blue boundaries. The shape often resembles an upside-down wedding cake because the surface area near the primary airport is surrounded by progressively higher-floor shelves."
+        },
+        {
+          "heading": "Read top over bottom",
+          "body": "Class B altitude pairs are read as ceiling over floor, in hundreds of feet MSL. A marking 100/30 means the Class B segment has a ceiling of 10,000 feet MSL and a floor of 3,000 feet MSL. If the lower value is SFC, that segment begins at the surface."
+        },
+        {
+          "heading": "Do not confuse the shelf with the surface",
+          "body": "If you are under a 30 floor, the Class B does not begin until 3,000 MSL. The airspace at 200 feet AGL under that shelf will be some other class. The question may deliberately place an airport such as Dallas Executive under a Class B shelf while the airport itself has Class D at the surface."
+        },
+        {
+          "heading": "Authorization",
+          "body": "A Part 107 operation actually inside Class B requires prior ATC authorization. Determine the operation altitude in MSL, compare it with the Class B floor at that exact horizontal location, and then decide whether the drone would enter Class B."
+        },
+        {
+          "heading": "Work from outside in",
+          "body": "On a crowded Class B chart, first find the target point, then identify the smallest shelf boundary that actually encloses it. Read the altitude pair printed for that shelf. Do not use a nearby pair from an adjacent ring."
+        }
+      ],
+      "visual_drills": [
+        "Figure 25 Area 3: identify the floor of the Class B shelf over Dallas Executive (RBD).",
+        "Figure 25 Area 4: identify the Class B floor near Fort Worth Alliance (AFW).",
+        "Select three points under different shelves and ask whether a drone at 400 feet AGL would actually be in Class B after converting to MSL using given ground elevation."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "The chart segment is labeled 100/30. What are the vertical limits?",
+          "steps": [
+            "Multiply each numeric value by 100.",
+            "Top: 10,000 MSL.",
+            "Bottom: 3,000 MSL."
+          ],
+          "answer": "3,000 MSL up to 10,000 MSL for that shelf."
+        },
+        {
+          "prompt": "Ground elevation is 600 MSL. The Class B floor is 3,000 MSL. A drone is 400 AGL. Is it inside the Class B shelf?",
+          "steps": [
+            "Drone MSL altitude is approximately 600 + 400 = 1,000 MSL.",
+            "1,000 is below the 3,000 MSL Class B floor."
+          ],
+          "answer": "No; it is below that Class B shelf."
+        }
+      ],
+      "common_test_traps": [
+        "Reading 100/30 as 100 feet over 30 feet.",
+        "Reversing the fraction and treating 30 as the ceiling.",
+        "Using a shelf label from the wrong ring.",
+        "Assuming 'under Class B' means 'in Class B.'"
+      ],
+      "knowledge_check": [
+        {
+          "q": "Class B boundaries are normally depicted as?",
+          "choices": [
+            "Solid blue",
+            "Dashed blue",
+            "Solid magenta",
+            "Dashed magenta"
+          ],
+          "answer": 0,
+          "explanation": "Class B uses solid blue chart boundaries."
+        },
+        {
+          "q": "A Class B label 100/30 means?",
+          "choices": [
+            "100 AGL to 30 AGL",
+            "3,000 MSL to 10,000 MSL",
+            "10,000 AGL to 3,000 AGL",
+            "Surface to 3,000 MSL"
+          ],
+          "answer": 1,
+          "explanation": "The top is 10,000 MSL and floor 3,000 MSL."
+        },
+        {
+          "q": "A drone is below the published floor of a Class B shelf. Is it in Class B?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "answer": 1,
+          "explanation": "Class B begins at the charted floor for that shelf."
+        },
+        {
+          "q": "If the floor value says SFC, the Class B segment begins where?",
+          "choices": [
+            "At 700 AGL",
+            "At 1,200 AGL",
+            "At the surface",
+            "At 18,000 MSL"
+          ],
+          "answer": 2,
+          "explanation": "SFC means the airspace begins at the surface."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "SECTIONAL CHARTS ADVANCED Part 107 | Remote Pilot Study Guide 9 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=aYGixD3Z6yI",
+          "use": "Advanced chart symbology, airport frequencies, special-use airspace, MEF, obstructions."
+        },
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        }
+      ],
+      "mastery_standard": "Student correctly reads the floor/ceiling of 4 of 5 Class B shelf examples and determines whether a stated drone altitude enters the shelf.",
+      "instructor_note": "Make students point to the exact shelf label they used; most wrong answers come from reading an adjacent ring."
+    },
+    {
+      "id": "class-c",
+      "title": "7. Class C Airspace: Solid Magenta Core and Shelf",
+      "question_bank_categories": [
+        "Class C Airspace",
+        "Airspace Boundaries & Authorization"
+      ],
+      "estimated_minutes": 17,
+      "learning_objectives": [
+        "Recognize Class C solid magenta boundaries.",
+        "Read Class C core and shelf altitude pairs.",
+        "Determine floor/ceiling in MSL and convert to AGL when asked.",
+        "Apply Part 107 authorization requirements.",
+        "Use Savannah-area supplement imagery as a model rather than memorizing one airport."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 23, Area 3",
+          "use": "Savannah Class C core/shelf; commonly used to ask the outer-shelf floor."
+        },
+        {
+          "reference": "Figure 20",
+          "use": "Norfolk Class C for a second visual example."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Solid magenta Class C boundary and altitude notation."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Recognition",
+          "body": "Class C is depicted with solid magenta boundaries. It normally has a surface core around the primary airport and an outer shelf with a higher floor. Exact shapes and altitudes are individually tailored, so always read the chart rather than memorizing standard dimensions."
+        },
+        {
+          "heading": "Altitude pairs",
+          "body": "Like Class B, Class C uses ceiling/floor values in hundreds of feet MSL. A label 41/13 means 4,100 MSL ceiling and 1,300 MSL floor. A label 41/SFC means the core extends from the surface to 4,100 MSL."
+        },
+        {
+          "heading": "Part 107 authorization",
+          "body": "A Part 107 operation inside Class C requires prior ATC authorization. Under a shelf, however, the drone may be below the Class C floor. Determine the operation's MSL altitude before deciding."
+        },
+        {
+          "heading": "MSL/AGL trap",
+          "body": "Class C values on the chart are MSL. If a question asks how high the ceiling or floor is above the ground/airport, convert using the local elevation. This is why the earlier MSL/AGL lesson comes before airspace."
+        },
+        {
+          "heading": "Visualize the shelf",
+          "body": "Imagine a cylinder around the airport with an outer donut-shaped shelf. A point in the outer ring may have Class G or E below the shelf and Class C above. The horizontal point alone is not enough; altitude matters."
+        }
+      ],
+      "visual_drills": [
+        "Figure 23 Area 3: find the Savannah outer shelf and read its floor before looking at answer choices.",
+        "Figure 20: locate Norfolk Class C and identify a surface-core segment versus an outer shelf.",
+        "Give ground elevation and shelf floor MSL; ask whether a 400-AGL flight reaches Class C."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A Class C shelf is labeled 41/13. Interpret it.",
+          "steps": [
+            "41 = 4,100 feet MSL ceiling.",
+            "13 = 1,300 feet MSL floor."
+          ],
+          "answer": "Class C from 1,300 MSL up to 4,100 MSL in that segment."
+        },
+        {
+          "prompt": "Ground elevation is 200 MSL and Class C begins at 1,300 MSL. A drone at 400 AGL is at what approximate MSL altitude, and is it in Class C?",
+          "steps": [
+            "200 + 400 = 600 MSL.",
+            "600 is below 1,300 MSL."
+          ],
+          "answer": "About 600 MSL; below the Class C shelf."
+        }
+      ],
+      "common_test_traps": [
+        "Calling every solid magenta area Class E; Class E surface uses dashed magenta, not solid.",
+        "Reading the floor and ceiling backward.",
+        "Forgetting that shelf numbers are MSL.",
+        "Assuming an airport under a Class C shelf is automatically inside the Class C at the surface."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Class C boundaries are usually?",
+          "choices": [
+            "Solid blue",
+            "Dashed blue",
+            "Solid magenta",
+            "Dashed magenta"
+          ],
+          "answer": 2,
+          "explanation": "Class C uses solid magenta boundaries."
+        },
+        {
+          "q": "41/13 means which vertical limits?",
+          "choices": [
+            "4,100 MSL ceiling / 1,300 MSL floor",
+            "1,300 ceiling / 4,100 floor",
+            "410 AGL / 130 AGL",
+            "Surface / 4,100"
+          ],
+          "answer": 0,
+          "explanation": "Values are hundreds of feet MSL, ceiling over floor."
+        },
+        {
+          "q": "A Part 107 flight actually inside Class C normally requires?",
+          "choices": [
+            "No action",
+            "ATC airspace authorization",
+            "Only property-owner permission",
+            "Only a METAR"
+          ],
+          "answer": 1,
+          "explanation": "Class C requires prior ATC authorization under Part 107."
+        },
+        {
+          "q": "What does SFC in a Class C altitude pair mean?",
+          "choices": [
+            "Special flight corridor",
+            "Surface",
+            "Sea fog condition",
+            "Sectional frequency code"
+          ],
+          "answer": 1,
+          "explanation": "SFC means the airspace begins at the surface."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "SECTIONAL CHARTS ADVANCED Part 107 | Remote Pilot Study Guide 9 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=aYGixD3Z6yI",
+          "use": "Advanced chart symbology, airport frequencies, special-use airspace, MEF, obstructions."
+        },
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        }
+      ],
+      "mastery_standard": "Student reads 4 of 5 Class C core/shelf examples correctly and separates chart MSL values from AGL operational altitude.",
+      "instructor_note": "Ask the student to draw a side-view 'core plus shelf' after the first lesson screen."
+    },
+    {
+      "id": "class-d",
+      "title": "8. Class D Airspace: Dashed Blue Circles and Boxed Ceilings",
+      "question_bank_categories": [
+        "Class D Airspace",
+        "Airport Symbols, Frequencies & Traffic Patterns",
+        "Airspace Boundaries & Authorization"
+      ],
+      "estimated_minutes": 18,
+      "learning_objectives": [
+        "Recognize dashed blue Class D boundaries.",
+        "Read the Class D ceiling shown in hundreds of feet MSL.",
+        "Understand the meaning of a minus sign in a Class D ceiling notation.",
+        "Convert a Class D ceiling from MSL to approximate AGL when asked.",
+        "Apply Part 107 authorization requirements and recognize part-time tower issues."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 21, Area 1",
+          "use": "Minot Class D and airport elevation; excellent MSL-to-AGL exercise."
+        },
+        {
+          "reference": "Figure 25, Area 2",
+          "use": "Addison Class D beneath Dallas Class B; demonstrates stacked airspace."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Dashed blue boundary and ceiling notation."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Recognition",
+          "body": "Class D airspace around a towered airport is depicted by a dashed blue boundary. It is often roughly circular but can have extensions or irregular shapes to contain instrument procedures."
+        },
+        {
+          "heading": "Ceiling number",
+          "body": "The Class D ceiling is shown in hundreds of feet MSL, typically inside a small boxed/bracketed value associated with the boundary. A 42 ceiling means 4,200 feet MSL. If the question asks for the ceiling above the airport, subtract field elevation."
+        },
+        {
+          "heading": "Minus sign",
+          "body": "A minus preceding the ceiling value means the Class D extends up to but does not include that altitude. This is often used where another controlled-airspace shelf begins at the same altitude, preventing overlap in classification."
+        },
+        {
+          "heading": "Stacking with Class B or C",
+          "body": "A Class D surface area can sit beneath a Class B or C shelf. Figure 25 is useful because an airport can have Class D at the surface while Class B begins above it. Read both boundaries and vertical limits rather than choosing one class for the entire column."
+        },
+        {
+          "heading": "Tower hours matter",
+          "body": "Some Class D airspace is part time. When the tower closes, the surface area may become Class E or Class G as published. For a real operation, consult current chart/Chart Supplement and NOTAM information. For an exam question, use the operating condition stated in the prompt."
+        }
+      ],
+      "visual_drills": [
+        "Figure 21 Area 1: locate Minot's dashed blue boundary and ceiling value, then subtract the airport elevation to estimate AGL height.",
+        "Figure 25 Area 2: identify Class D at Addison and the Class B shelf above it.",
+        "Use a hypothetical [-30] notation and ask students what happens at exactly 3,000 MSL."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "Minot's Class D ceiling is 4,200 MSL and field elevation is 1,716 MSL. Approximate ceiling AGL?",
+          "steps": [
+            "4,200 - 1,716 = 2,484."
+          ],
+          "answer": "About 2,484 feet above airport elevation."
+        },
+        {
+          "prompt": "A Class D ceiling is shown as [-30]. What does the minus communicate?",
+          "steps": [
+            "30 represents 3,000 MSL.",
+            "The minus means the Class D top is below / does not include 3,000 MSL."
+          ],
+          "answer": "Class D extends up to but not including 3,000 MSL."
+        }
+      ],
+      "common_test_traps": [
+        "Reading a Class D ceiling as AGL instead of MSL.",
+        "Ignoring a Class B/C shelf directly above the Class D.",
+        "Assuming Class D remains in effect 24 hours when the tower is part time.",
+        "Treating radio contact with the tower as the normal way to obtain Part 107 airspace authorization."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Class D is depicted with what boundary?",
+          "choices": [
+            "Dashed blue",
+            "Solid blue",
+            "Solid magenta",
+            "Faded magenta"
+          ],
+          "answer": 0,
+          "explanation": "Class D uses a dashed blue boundary."
+        },
+        {
+          "q": "A Class D ceiling value of 42 means approximately?",
+          "choices": [
+            "420 AGL",
+            "4,200 MSL",
+            "42,000 MSL",
+            "Surface to 420 MSL"
+          ],
+          "answer": 1,
+          "explanation": "Ceiling values are hundreds of feet MSL."
+        },
+        {
+          "q": "A minus sign before a Class D ceiling generally means?",
+          "choices": [
+            "The airspace is cancelled",
+            "The stated altitude is not included",
+            "The airport is below sea level",
+            "Authorization is not required"
+          ],
+          "answer": 1,
+          "explanation": "The minus indicates the upper altitude is not included."
+        },
+        {
+          "q": "Part 107 operation inside active Class D normally requires?",
+          "choices": [
+            "ATC authorization",
+            "No authorization",
+            "Only AWOS monitoring",
+            "Only a visual observer"
+          ],
+          "answer": 0,
+          "explanation": "Class D requires prior ATC authorization."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "Part 107 Exam SECTIONAL CHARTS Explained VFR | Study Guide 2 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=yEu8pgegaBI",
+          "use": "Sectional chart basics, airports, airport data, Class D, obstruction introduction."
+        },
+        {
+          "title": "PART 107 Exam SECTIONAL CHART SYMBOLS | Study Guide 11 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=9u2c2ojoQ8k",
+          "use": "Legend practice, Class E vignettes, obstacles, restricted areas, Class D ceilings."
+        },
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        }
+      ],
+      "mastery_standard": "Student identifies active Class D and correctly interprets its ceiling in 4 of 5 examples, including one stacked-airspace example.",
+      "instructor_note": "Pair Class D questions with airport-frequency questions so students learn to separate airspace from communication data."
+    },
+    {
+      "id": "class-e",
+      "title": "9. Class E Airspace: Surface Areas, 700/1,200-Foot Floors, and the Authorization Trap",
+      "question_bank_categories": [
+        "Class E Airspace",
+        "Airspace Boundaries & Authorization"
+      ],
+      "estimated_minutes": 26,
+      "learning_objectives": [
+        "Recognize dashed magenta Class E surface boundaries.",
+        "Recognize magenta and blue vignettes for Class E transition-area floors.",
+        "Differentiate Class E surface areas from Class E beginning at 700 or 1,200 AGL.",
+        "Know when Part 107 authorization is and is not required in Class E.",
+        "Interpret a modern FAA embedded-image example involving a Class E airport surface area."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 26",
+          "use": "Class E / MOA / rural-airspace visual practice."
+        },
+        {
+          "reference": "Figure 20, Area 1",
+          "use": "Use NALF Fentress and nearby boundaries for classification practice."
+        },
+        {
+          "reference": "September 2026 ATCA Millville UAG sample",
+          "use": "Authoritative current example: Class E airport surface area and authorization required."
+        },
+        {
+          "reference": "Legend 1",
+          "use": "Dashed magenta and vignette symbology."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Why Class E is difficult",
+          "body": "Class E is controlled airspace, but it can begin at the surface, at 700 AGL, at 1,200 AGL, or at another published altitude. Part 107 authorization rules do not treat every Class E area the same, which makes this one of the most testable traps."
+        },
+        {
+          "heading": "Dashed magenta = Class E at the surface",
+          "body": "A dashed magenta boundary identifies Class E airspace beginning at the surface. When that surface area is designated for an airport, a Part 107 operation within its lateral boundaries requires ATC authorization. The September 2026 FAA UAG sample at Millville specifically tests this."
+        },
+        {
+          "heading": "Magenta vignette = 700 AGL transition area",
+          "body": "A magenta vignette indicates controlled Class E airspace begins at 700 feet AGL. The airspace below, absent another surface designation, is Class G. A drone at 400 AGL is normally below that Class E floor."
+        },
+        {
+          "heading": "Blue vignette = floor other than 700 AGL, commonly 1,200 AGL",
+          "body": "The FAA Chart Users' Guide explains that floors other than 700 feet AGL that laterally abut Class G are shown with a blue vignette; a common value is 1,200 AGL. Higher or differing floors may be specifically annotated. Do not reduce the rule to 'blue always equals exactly 1,200' without reading the label/context."
+        },
+        {
+          "heading": "Authorization rule",
+          "body": "For Part 107, only Class E within the lateral boundaries of a surface area designated for an airport (often called E2 in technical material) triggers the normal §107.41 airspace-authorization requirement. A Class E transition area beginning at 700 or 1,200 AGL does not by itself require Part 107 authorization for a flight below it."
+        },
+        {
+          "heading": "Surface extensions require care",
+          "body": "Dashed magenta can also depict Class E surface extensions associated with instrument procedures. The operational/legal treatment can depend on whether the area is part of the airport-designated surface area versus an extension. For exam study, anchor to FAA wording and the stated scenario; for real operations, verify current FAA airspace data and authorization requirements rather than inferring from one symbol alone."
+        }
+      ],
+      "visual_drills": [
+        "Display the Millville FAA sample and ask the student to identify the dashed magenta boundary and authorization consequence.",
+        "Show a magenta vignette and ask the class at 400, 800 and 1,500 AGL.",
+        "Show a blue vignette plus a labeled floor and have the student describe which side has the depicted Class E floor."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A location is inside a magenta vignette where Class E begins at 700 AGL. The drone is at 350 AGL. What class is it in?",
+          "steps": [
+            "The Class E floor is 700 AGL.",
+            "Below 700, absent another surface area, is Class G."
+          ],
+          "answer": "Class G."
+        },
+        {
+          "prompt": "A dashed magenta line encloses Millville Muni as an airport Class E surface area. Does a Part 107 flight inside the lateral boundary require authorization?",
+          "steps": [
+            "Dashed magenta indicates Class E at the surface.",
+            "FAA's UAG sample identifies this as Class E associated with an airport surface area.",
+            "Part 107.41 authorization is required."
+          ],
+          "answer": "Yes."
+        }
+      ],
+      "common_test_traps": [
+        "Memorizing 'Class E never needs authorization.'",
+        "Confusing a magenta vignette (700 AGL floor) with a dashed magenta surface boundary.",
+        "Assuming a blue vignette always means exactly 1,200 AGL without checking annotations.",
+        "Saying a 400-AGL drone is in Class E simply because Class E exists above the location."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Dashed magenta normally indicates?",
+          "choices": [
+            "Class B",
+            "Class C",
+            "Class D",
+            "Class E beginning at the surface"
+          ],
+          "answer": 3,
+          "explanation": "Dashed magenta is the key Class E surface-area depiction."
+        },
+        {
+          "q": "A magenta vignette normally indicates a Class E floor of?",
+          "choices": [
+            "Surface",
+            "700 AGL",
+            "10,000 MSL",
+            "18,000 MSL"
+          ],
+          "answer": 1,
+          "explanation": "Magenta vignette marks a 700-foot AGL Class E transition floor."
+        },
+        {
+          "q": "If Class E starts at 700 AGL, what is normally below it when no other surface airspace exists?",
+          "choices": [
+            "Class A",
+            "Class B",
+            "Class G",
+            "Class C"
+          ],
+          "answer": 2,
+          "explanation": "Class G occupies the surface layer below the Class E floor."
+        },
+        {
+          "q": "Which Class E most clearly triggers normal Part 107 airspace authorization?",
+          "choices": [
+            "700-foot transition area",
+            "1,200-foot transition area",
+            "Airport-designated Class E surface area",
+            "All Class E everywhere"
+          ],
+          "answer": 2,
+          "explanation": "FAA guidance specifies the lateral boundaries of airport-designated Class E surface areas."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        },
+        {
+          "title": "PART 107 Exam SECTIONAL CHART SYMBOLS | Study Guide 11 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=9u2c2ojoQ8k",
+          "use": "Legend practice, Class E vignettes, obstacles, restricted areas, Class D ceilings."
+        }
+      ],
+      "mastery_standard": "Student correctly distinguishes surface Class E from 700/1,200-foot transition areas and answers authorization status correctly on 5 of 6 mixed examples.",
+      "instructor_note": "This should be a required mastery lesson before the full map test. Class E is a high-value misconception area."
+    },
+    {
+      "id": "authorization-notams",
+      "title": "10. Airspace Boundaries, Authorization, NOTAMs & TFRs",
+      "question_bank_categories": [
+        "Airspace Boundaries & Authorization (includes NOTAMs)",
+        "General Chart Reading"
+      ],
+      "estimated_minutes": 19,
+      "learning_objectives": [
+        "Separate static chart information from temporary operational restrictions.",
+        "Know which airspace classes require Part 107 authorization.",
+        "Understand the role of LAANC, DroneZone, UAS Facility Maps, NOTAMs and TFRs at a test-prep level.",
+        "Recognize that authorization does not override a TFR or other restriction.",
+        "Build a preflight information habit that goes beyond the printed sectional."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figures 20-26",
+          "use": "Use chart boundaries as the static-airspace layer."
+        },
+        {
+          "reference": "September 2026 ATCA",
+          "use": "Demonstrates current chart imagery and reinforces the need to interpret current data."
+        },
+        {
+          "reference": "FAA testing/Chart Users' Guide sources",
+          "use": "Explain that charts change and NOTAMs update information between chart cycles."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Static versus temporary information",
+          "body": "A sectional tells you the charted airspace structure and many permanent features, but it cannot show every temporary change after publication. NOTAMs provide time-sensitive aeronautical information. TFRs are regulatory airspace restrictions issued for events such as security, hazards, VIP movement, disasters or other special conditions."
+        },
+        {
+          "heading": "Authorization classes",
+          "body": "Under Part 107, prior ATC authorization is required to operate in Class B, C or D airspace or within the lateral boundaries of a Class E surface area designated for an airport. LAANC can provide near-real-time authorization in participating controlled airspace at or below published facility-map altitudes. DroneZone is used for other authorization workflows."
+        },
+        {
+          "heading": "UAS Facility Maps are not blanket permission",
+          "body": "A UAS Facility Map shows altitudes at which FAA may approve operations more readily; the grid value itself is not authorization. The operator still needs an actual authorization when operating in covered controlled airspace."
+        },
+        {
+          "heading": "A TFR can change the answer",
+          "body": "Airspace authorization and a TFR address different issues. Having a LAANC authorization does not automatically authorize flight inside a TFR. A question may test whether the remote pilot must check current restrictions even though the sectional appears clear."
+        },
+        {
+          "heading": "A practical study workflow",
+          "body": "For chart-based questions: identify the static airspace from the chart, decide whether authorization is required, then consider whether the question introduces a NOTAM/TFR or operating-hours change. For real-world operations, use current FAA sources and agency procedures rather than relying on a training image."
+        }
+      ],
+      "visual_drills": [
+        "Give the student a Class D point with a hypothetical TFR over it and ask them to list the separate approvals/restrictions they must consider.",
+        "Show a UAS Facility Map grid example conceptually and ask whether a grid number itself equals authorization.",
+        "Use a chart dated several months earlier and ask what sources could contain changes since publication."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "You have LAANC authorization for 200 feet AGL in Class D, but a TFR becomes active over the area. Does the LAANC authorization automatically override the TFR?",
+          "steps": [
+            "LAANC addresses controlled-airspace authorization.",
+            "TFR is a separate regulatory restriction.",
+            "Check the TFR's terms and any applicable exception/authorization process."
+          ],
+          "answer": "No. Controlled-airspace authorization does not automatically override a TFR."
+        },
+        {
+          "prompt": "A UAS Facility Map grid shows 300. Can you fly to 300 AGL without an authorization?",
+          "steps": [
+            "The grid is a planning/authorization ceiling indicator.",
+            "It is not itself permission."
+          ],
+          "answer": "No; if the location is controlled airspace requiring authorization, obtain the authorization."
+        }
+      ],
+      "common_test_traps": [
+        "Treating a UAS Facility Map altitude as automatic permission.",
+        "Thinking a clear sectional means no temporary restriction exists.",
+        "Assuming a Part 107 certificate itself is airspace authorization.",
+        "Calling the tower directly for routine authorization instead of using FAA authorization channels."
+      ],
+      "knowledge_check": [
+        {
+          "q": "Which is temporary/time-sensitive information?",
+          "choices": [
+            "A sectional's printed Class B boundary",
+            "NOTAM",
+            "Latitude line",
+            "MEF only"
+          ],
+          "answer": 1,
+          "explanation": "NOTAMs communicate time-sensitive aeronautical information."
+        },
+        {
+          "q": "Does a UAS Facility Map grid value itself authorize the flight?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "answer": 1,
+          "explanation": "It informs authorization processing; an actual authorization is still required where applicable."
+        },
+        {
+          "q": "Which controlled airspace normally requires Part 107 authorization?",
+          "choices": [
+            "B/C/D and airport-designated E surface areas",
+            "Only Class B",
+            "Every Class E transition area",
+            "Class G"
+          ],
+          "answer": 0,
+          "explanation": "This is the Part 107.41 set."
+        },
+        {
+          "q": "A LAANC authorization automatically cancels any TFR restrictions over the same area.",
+          "choices": [
+            "True",
+            "False"
+          ],
+          "answer": 1,
+          "explanation": "TFR compliance is separate from controlled-airspace authorization."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "FAA Part 107 Airspace Explained: Sectional Charts, LAANC, and UAS Facility Maps (2026 Guide)",
+          "channel": "Open Exam Prep",
+          "url": "https://www.youtube.com/watch?v=KSjGay1Rw5Q",
+          "use": "Short current overview of B/C/D/E authorization concepts and sectional cues."
+        }
+      ],
+      "mastery_standard": "Student can separate airspace authorization, facility-map data, and temporary restrictions in 4 of 5 scenarios.",
+      "instructor_note": "Keep this lesson test-focused. Detailed agency operational waiver procedures belong in the MPD policy/manual, not the Part 107 study page."
+    },
+    {
+      "id": "special-use-airspace",
+      "title": "11. Special-Use Airspace, MOAs, Restricted Areas & Military Training Routes",
+      "question_bank_categories": [
+        "Special-Use Airspace (MOA/Restricted/Routes)",
+        "General Chart Reading"
+      ],
+      "estimated_minutes": 20,
+      "learning_objectives": [
+        "Recognize MOAs and restricted areas on chart excerpts.",
+        "Know the operational difference between an MOA and a restricted area at an exam-prep level.",
+        "Use chart/Chart Supplement information to determine status, altitudes and controlling agency.",
+        "Recognize Military Training Route identifiers such as IR and VR.",
+        "Understand that Part 107 pilots should not treat military-use symbology as decorative background."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 21 - Devils Lake West MOA",
+          "use": "MOA status/reference practice."
+        },
+        {
+          "reference": "Figure 26, Area 1 - Devils Lake East MOA",
+          "use": "Identify a Military Operations Area from the chart label."
+        },
+        {
+          "reference": "Figures 20 and 24 where applicable",
+          "use": "Use warning/restricted/special-use boundaries and chart legend practice."
+        },
+        {
+          "reference": "September 2026 ATCA IFR sample with IR313/IR300",
+          "use": "Current FAA example that identifies an IFR Military Training Route."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "Special-use airspace is a category",
+          "body": "Special-use airspace includes areas where activities may be hazardous to nonparticipating aircraft or where flight may be restricted. For Part 107 test questions, MOAs and restricted areas are the most common map-reading targets, along with military training routes."
+        },
+        {
+          "heading": "MOA",
+          "body": "A Military Operations Area separates certain military training activities from IFR traffic and alerts VFR users to possible high-speed or abrupt military activity. An MOA is not automatically a prohibition on VFR/Part 107 flight simply because the boundary exists, but its status and activity matter. The exam may ask how to determine whether an MOA is active; use the special-use airspace information/controlling agency information provided through FAA chart resources."
+        },
+        {
+          "heading": "Restricted area",
+          "body": "A restricted area contains unusual, often invisible hazards such as artillery, aerial gunnery or guided missiles. Flight within an active restricted area is subject to restrictions and requires appropriate permission/clearance under the applicable rules. Do not treat an active restricted area like an MOA."
+        },
+        {
+          "heading": "Military Training Routes",
+          "body": "Military Training Routes are depicted with route identifiers. IR indicates routes conducted under IFR; VR indicates routes conducted under VFR. Four-digit route numbers generally indicate segments where operations are at or below 1,500 feet AGL; three-digit routes can include segments above 1,500 AGL. For drone pilots, the safety takeaway is that very fast military aircraft may be operating low."
+        },
+        {
+          "heading": "Read the boundary, then find the details",
+          "body": "Special-use chart boundaries and names identify the area, but status, times, altitudes and controlling agency may be in the chart margin or Chart Supplement. The test may ask which reference to use rather than asking you to calculate anything."
+        }
+      ],
+      "visual_drills": [
+        "Figure 21: locate Devils Lake West MOA and ask what additional information is needed before operating there.",
+        "Figure 26 Area 1: identify the Devils Lake East MOA from its label/boundary.",
+        "Show IR313/IR300 from the FAA's September 2026 sample and ask what IR means."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "Your planned crop survey lies inside the Devils Lake West MOA. How do you determine whether military activity is active?",
+          "steps": [
+            "Identify the MOA by name on the sectional.",
+            "Consult the special-use airspace information/Chart Supplement for times, altitudes, controlling agency and contact information.",
+            "Use current information; do not assume inactive from the appearance of the chart."
+          ],
+          "answer": "Use the FAA special-use airspace/controlling-agency information associated with the chart and current publications."
+        },
+        {
+          "prompt": "A route is labeled IR313. What does IR indicate?",
+          "steps": [
+            "IR identifies an IFR Military Training Route."
+          ],
+          "answer": "An IFR Military Training Route."
+        }
+      ],
+      "common_test_traps": [
+        "Assuming every MOA is a no-fly area.",
+        "Assuming a restricted area is merely advisory.",
+        "Ignoring military routes because they are not one of B/C/D/E airspace classes.",
+        "Using static chart appearance to decide whether an MOA/restricted area is active at a particular time."
+      ],
+      "knowledge_check": [
+        {
+          "q": "MOA stands for?",
+          "choices": [
+            "Meteorological Observation Area",
+            "Military Operations Area",
+            "Mandatory Operating Altitude",
+            "Military Obstruction Area"
+          ],
+          "answer": 1,
+          "explanation": "MOA is Military Operations Area."
+        },
+        {
+          "q": "Which is generally more restrictive when active?",
+          "choices": [
+            "MOA",
+            "Restricted area"
+          ],
+          "answer": 1,
+          "explanation": "Restricted areas contain defined hazards and flight is subject to restrictions; an MOA is not automatically a prohibition for VFR users."
+        },
+        {
+          "q": "IR313 identifies what?",
+          "choices": [
+            "Instrument runway",
+            "IFR Military Training Route",
+            "Restricted area 313",
+            "Airport identifier"
+          ],
+          "answer": 1,
+          "explanation": "IR denotes an IFR Military Training Route."
+        },
+        {
+          "q": "To determine times/altitudes/controlling agency for special-use airspace, what should you use?",
+          "choices": [
+            "Only the map color",
+            "FAA special-use airspace information/Chart Supplement",
+            "Only the METAR",
+            "Load factor chart"
+          ],
+          "answer": 1,
+          "explanation": "The detailed status information comes from associated FAA chart/publication data."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "SECTIONAL CHARTS ADVANCED Part 107 | Remote Pilot Study Guide 9 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=aYGixD3Z6yI",
+          "use": "Advanced chart symbology, airport frequencies, special-use airspace, MEF, obstructions."
+        },
+        {
+          "title": "PART 107 Exam SECTIONAL CHART SYMBOLS | Study Guide 11 of 12",
+          "channel": "MikeSytes",
+          "url": "https://www.youtube.com/watch?v=9u2c2ojoQ8k",
+          "use": "Legend practice, Class E vignettes, obstacles, restricted areas, Class D ceilings."
+        }
+      ],
+      "mastery_standard": "Student correctly distinguishes MOA, restricted area and military route concepts in 4 of 5 visual/scenario questions.",
+      "instructor_note": "Tie this to officer safety: the exam fact matters because low-level high-speed military traffic can be a real collision hazard."
+    },
+    {
+      "id": "metar",
+      "title": "12. METAR: Decode Current Weather One Group at a Time",
+      "question_bank_categories": [
+        "METAR",
+        "non-visual Weather"
+      ],
+      "estimated_minutes": 28,
+      "learning_objectives": [
+        "Explain that METAR is an aviation routine weather observation, not a forecast.",
+        "Decode station, observation time, wind, visibility, weather, sky condition, temperature/dew point, altimeter and remarks.",
+        "Recognize wind direction as degrees true in the printed METAR.",
+        "Identify ceiling from BKN/OVC/VV layers.",
+        "Use FAA supplement Figure 12 instead of memorizing isolated abbreviations."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 12 - Aviation Routine Weather Reports (METAR)",
+          "use": "Primary supplement image; use KJFK, KMDW, KINK, KBOI and KLAX examples."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "METAR is a snapshot",
+          "body": "A METAR reports observed airport weather, typically issued routinely and supplemented by SPECI reports when significant conditions change. Read it left to right as a sequence of data groups. Do not try to decode the whole line at once."
+        },
+        {
+          "heading": "Station and time",
+          "body": "The four-letter station identifier comes first, followed by a date/time group such as 121853Z: day 12 at 1853 Zulu/UTC. Z means UTC. Exam questions may ask what time an observation was taken, so separate day from hour/minute."
+        },
+        {
+          "heading": "Wind",
+          "body": "A group such as 18004KT means wind from 180 degrees true at 4 knots. 11012G18KT means wind from 110 true at 12 knots, gusting 18. VRB indicates variable direction. 'If it is in print, it is true' is a useful study memory for METAR/TAF wind direction."
+        },
+        {
+          "heading": "Visibility, weather and sky",
+          "body": "Visibility is reported in statute miles in U.S. METARs. Weather codes include RA rain, SHRA rain showers, FG fog, BR mist, TS thunderstorm and others. Cloud groups such as SCT025 or OVC007 give coverage and base in hundreds of feet AGL: OVC007 means overcast at 700 AGL."
+        },
+        {
+          "heading": "Ceiling",
+          "body": "For aviation weather, the ceiling is the lowest layer reported as broken (BKN), overcast (OVC), or vertical visibility (VV). FEW and SCT do not constitute a ceiling. This matters when comparing conditions with Part 107 cloud-clearance requirements."
+        },
+        {
+          "heading": "Temperature, dew point, altimeter and remarks",
+          "body": "A group such as 20/18 means temperature 20°C and dew point 18°C. A small temperature/dew-point spread can signal high relative humidity and fog/low-cloud potential. A3006 means altimeter 30.06 inches Hg. RMK begins remarks; for example RAB35 means rain began at 35 minutes past the hour."
+        }
+      ],
+      "visual_drills": [
+        "Open Figure 12 and highlight only the KJFK line. Color-code each data group in order.",
+        "Have the student decode KMDW's sky and visibility without answer choices.",
+        "Ask which Figure 12 stations are VFR based on visibility/ceiling clues, then discuss why that does not replace full operational weather analysis."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "Decode: SPECI KJFK 121853Z 18004KT 1/2SM FG OVC005 20/18 A3006.",
+          "steps": [
+            "KJFK station.",
+            "Day 12 at 1853Z.",
+            "Wind 180 true at 4 kt.",
+            "Visibility 1/2 statute mile.",
+            "Fog.",
+            "Overcast 500 feet AGL.",
+            "Temp 20°C, dew point 18°C.",
+            "Altimeter 30.06."
+          ],
+          "answer": "Low-visibility fog with a 500-foot overcast; clearly poor conditions for a normal Part 107 operation."
+        },
+        {
+          "prompt": "What does OVC007 mean?",
+          "steps": [
+            "OVC = overcast.",
+            "007 = 7 hundreds of feet."
+          ],
+          "answer": "Overcast cloud base at 700 feet AGL."
+        }
+      ],
+      "common_test_traps": [
+        "Reading wind direction as magnetic instead of true.",
+        "Reading OVC007 as 7,000 feet instead of 700.",
+        "Calling SCT a ceiling.",
+        "Confusing METAR (observation/current conditions) with TAF (forecast).",
+        "Reading the Z time group as local time."
+      ],
+      "knowledge_check": [
+        {
+          "q": "METAR primarily reports?",
+          "choices": [
+            "Forecast conditions",
+            "Observed/current aviation weather",
+            "Airspace authorization",
+            "Airport ownership"
+          ],
+          "answer": 1,
+          "explanation": "METAR is an observation; TAF is a forecast."
+        },
+        {
+          "q": "18004KT means?",
+          "choices": [
+            "Wind 180 true at 4 knots",
+            "Wind 180 magnetic at 40 knots",
+            "Visibility 180 miles",
+            "Temperature 18/4"
+          ],
+          "answer": 0,
+          "explanation": "Wind group is direction in degrees true and speed in knots."
+        },
+        {
+          "q": "OVC007 means?",
+          "choices": [
+            "Overcast 70 ft",
+            "Overcast 700 ft AGL",
+            "Overcast 7,000 ft",
+            "Visibility 7 miles"
+          ],
+          "answer": 1,
+          "explanation": "Cloud height groups are hundreds of feet AGL."
+        },
+        {
+          "q": "Which layer counts as a ceiling?",
+          "choices": [
+            "FEW020",
+            "SCT020",
+            "BKN020",
+            "Any cloud layer"
+          ],
+          "answer": 2,
+          "explanation": "Ceiling is the lowest BKN, OVC, or VV layer."
+        },
+        {
+          "q": "RAB35 in remarks means?",
+          "choices": [
+            "Rain began at 35 minutes past the hour",
+            "Runway braking 35%",
+            "Barometer rose .35",
+            "Rain below 3.5 miles"
+          ],
+          "answer": 0,
+          "explanation": "RAB35 indicates rain began at minute 35."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "How to Read METAR & TAF Reports for the FAA Part 107 Exam (2026)",
+          "channel": "FAA 107 Boot Camp",
+          "url": "https://www.youtube.com/watch?v=xNrFTVLfG7c",
+          "use": "Line-by-line METAR and TAF decoding."
+        }
+      ],
+      "mastery_standard": "Student decodes the major groups in 4 of 5 METARs and correctly identifies wind, visibility and ceiling without an abbreviation cheat sheet.",
+      "instructor_note": "Allow a cheat sheet at first, then fade it. The goal is pattern recognition, not memorizing every rare weather code."
+    },
+    {
+      "id": "taf",
+      "title": "13. TAF: Read a Forecast as a Timeline, Not a Wall of Codes",
+      "question_bank_categories": [
+        "TAF",
+        "non-visual Weather"
+      ],
+      "estimated_minutes": 28,
+      "learning_objectives": [
+        "Explain the difference between a TAF forecast and a METAR observation.",
+        "Decode issue time and valid period.",
+        "Interpret FM, TEMPO, PROB and BECMG groups as changes on a timeline.",
+        "Read forecast wind, visibility, weather, cloud ceiling and cumulonimbus notation.",
+        "Use FAA supplement Figure 15 to answer time-window questions."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 15 - Terminal Aerodrome Forecasts (TAF)",
+          "use": "Primary supplement image; use KMEM and KOKC examples for valid periods and change groups."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "TAF is a forecast",
+          "body": "A TAF predicts weather for an airport area over a defined valid period. The decoding vocabulary looks like METAR, but the key skill is time. Build a timeline and determine which forecast group controls at the time in the question."
+        },
+        {
+          "heading": "Valid period",
+          "body": "A group such as 1218/1324 means the forecast is valid from the 12th day at 1800Z through the end of the 13th day at 2400Z (equivalent to 0000Z on the next day in practical timekeeping). Always identify the day and hour on both sides of the slash."
+        },
+        {
+          "heading": "FM - FROM",
+          "body": "FM followed by day/hour/minute, such as FM051600, means a new set of prevailing conditions begins at 1600Z on day 5. Once the FM group starts, it replaces the previous prevailing forecast until another change group takes over."
+        },
+        {
+          "heading": "TEMPO, PROB and BECMG",
+          "body": "TEMPO describes temporary fluctuations expected during a specified period. PROB30/PROB40 gives probability of specified conditions during the period. BECMG indicates conditions expected to become the new prevailing state during the stated change window. Figure 15 is useful because it forces the student to decide which group applies at an exact time."
+        },
+        {
+          "heading": "Weather and clouds",
+          "body": "Use the same codes learned in METAR: SHRA rain showers, TSRA thunderstorm with rain, BR mist, FG fog, P6SM more than 6 statute miles. Cloud groups are hundreds of feet AGL. CB identifies cumulonimbus; in TAFs, cumulonimbus is the cloud type specifically identified when forecast."
+        },
+        {
+          "heading": "Part 107 application",
+          "body": "After decoding the forecast, compare predicted visibility and cloud conditions with Part 107 requirements and the aircraft/mission limitations. A test question may include an otherwise valid airspace authorization but forecast visibility below 3 statute miles; weather still prevents compliance."
+        }
+      ],
+      "visual_drills": [
+        "Figure 15: draw a horizontal timeline for KMEM and mark each FM/TEMPO group.",
+        "Figure 15: identify KOKC conditions specifically during 1600Z-2200Z rather than decoding the entire TAF at once.",
+        "Give a target operation time and require the student to highlight only the active forecast segment."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "TAF valid period 1218/1324 means what?",
+          "steps": [
+            "Start: day 12 at 1800Z.",
+            "End: day 13 at 2400Z."
+          ],
+          "answer": "Valid from 1800Z on the 12th through 2400Z on the 13th."
+        },
+        {
+          "prompt": "The forecast says FM051600 18010KT P6SM SKC. What applies beginning at 1600Z on the 5th?",
+          "steps": [
+            "FM = new prevailing conditions from that time.",
+            "Wind 180 true at 10 knots.",
+            "Visibility greater than 6 SM.",
+            "Sky clear."
+          ],
+          "answer": "From 1600Z: 180°/10 kt, >6 SM, clear sky until superseded."
+        }
+      ],
+      "common_test_traps": [
+        "Using the TAF issue time as the valid-period start without reading the valid-period group.",
+        "Applying a TEMPO group for the entire forecast period.",
+        "Ignoring the day number when the forecast crosses midnight.",
+        "Treating a TAF as current observed weather rather than a forecast.",
+        "Reading P6SM as exactly 6 SM instead of greater than 6 statute miles."
+      ],
+      "knowledge_check": [
+        {
+          "q": "TAF is primarily a?",
+          "choices": [
+            "Current observation",
+            "Forecast",
+            "Airspace chart",
+            "NOTAM"
+          ],
+          "answer": 1,
+          "explanation": "TAF forecasts terminal-area weather."
+        },
+        {
+          "q": "What does FM051600 indicate?",
+          "choices": [
+            "Forecast ends at 1600Z",
+            "New prevailing conditions begin day 5 at 1600Z",
+            "Temporary conditions only",
+            "Probability 16%"
+          ],
+          "answer": 1,
+          "explanation": "FM introduces a new prevailing forecast beginning at the specified date/time."
+        },
+        {
+          "q": "TEMPO means?",
+          "choices": [
+            "Permanent airspace change",
+            "Temporary forecast fluctuations during a stated period",
+            "Temperature only",
+            "Tower closed"
+          ],
+          "answer": 1,
+          "explanation": "TEMPO identifies temporary conditions within the specified window."
+        },
+        {
+          "q": "P6SM means?",
+          "choices": [
+            "Precisely 6 SM",
+            "More than 6 statute miles",
+            "6 nautical miles",
+            "Visibility unknown"
+          ],
+          "answer": 1,
+          "explanation": "P means greater than; P6SM is more than 6 statute miles."
+        },
+        {
+          "q": "What is the best way to solve a TAF time question?",
+          "choices": [
+            "Decode every group and memorize it",
+            "Build a timeline and identify the group active at the asked time",
+            "Use only the first line",
+            "Convert all times to magnetic"
+          ],
+          "answer": 1,
+          "explanation": "TAF questions become much easier when treated as a timeline."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "How to Read METAR & TAF Reports for the FAA Part 107 Exam (2026)",
+          "channel": "FAA 107 Boot Camp",
+          "url": "https://www.youtube.com/watch?v=xNrFTVLfG7c",
+          "use": "Line-by-line METAR and TAF decoding."
+        }
+      ],
+      "mastery_standard": "Student selects the correct forecast segment and decodes operational weather at a specified time in 4 of 5 TAF scenarios.",
+      "instructor_note": "The UI should visually transform the raw TAF into a timeline after the student attempts the decode; that is a strong teaching feature for Claude to implement later."
+    },
+    {
+      "id": "load-factor",
+      "title": "14. Load Factor Chart: Bank Angle, G-Loading & Structural Load",
+      "question_bank_categories": [
+        "Load Factor Chart",
+        "Loading & Performance"
+      ],
+      "estimated_minutes": 18,
+      "learning_objectives": [
+        "Define load factor as a multiple of aircraft weight/normal load.",
+        "Use the FAA supplement load-factor chart to estimate G-loading at a bank angle in level flight.",
+        "Calculate the approximate structural load by multiplying aircraft weight by load factor.",
+        "Understand why load factor increases rapidly at steep bank angles.",
+        "Separate load-factor questions from center-of-gravity/moment questions."
+      ],
+      "supplement_references": [
+        {
+          "reference": "Figure 2 - Load Factor Chart",
+          "use": "Primary supplement chart for bank-angle versus load-factor questions."
+        },
+        {
+          "reference": "Figure 72",
+          "use": "Optional broader manned-aircraft load-factor-envelope reference; not needed for the core MPD107 Part 107 lesson unless the question bank uses it."
+        }
+      ],
+      "lesson_sections": [
+        {
+          "heading": "What load factor means",
+          "body": "Load factor is the load supported by the aircraft structure compared with the aircraft's weight. Straight-and-level unaccelerated flight is approximately 1 G. In a level banked turn, the aircraft must create extra lift to support its weight, so structural load increases."
+        },
+        {
+          "heading": "Read Figure 2",
+          "body": "The supplement's load-factor chart plots bank angle against load factor. At shallow bank angles, load factor changes slowly. As bank becomes steep, the curve rises quickly. Approximate reference points: 30° is about 1.15 G, 45° about 1.4 G, 60° is 2 G. Use the chart values presented on the exam rather than over-calculating."
+        },
+        {
+          "heading": "Turn load into pounds",
+          "body": "Structural load = aircraft weight × load factor. A 23-pound aircraft at 2 G imposes approximately 46 pounds of load on the structure. A 33-pound aircraft at about 1.15 G is roughly 38 pounds. The question may phrase this as how much weight the structure must support."
+        },
+        {
+          "heading": "Why the curve matters",
+          "body": "The relationship is nonlinear. Students often assume doubling bank angle doubles load; it does not. Load factor increases dramatically as bank angle approaches 90 degrees in a level turn. This is why the chart is provided."
+        },
+        {
+          "heading": "Do not mix formulas",
+          "body": "Moment problems use weight × arm and relate to center of gravity. Load-factor questions use aircraft weight × G/load factor. If a question gives bank angle and asks what load the structure supports, Figure 2 is the clue. If it gives an arm in inches and payload weight, it may be a moment/CG question instead."
+        }
+      ],
+      "visual_drills": [
+        "Open Figure 2 and have the student estimate the load factor at 30°, 45° and 60° before doing any multiplication.",
+        "Give three aircraft weights and one bank angle; have the student read one load factor and apply it consistently.",
+        "Show one load-factor problem and one moment problem side by side and ask which formula belongs to each."
+      ],
+      "worked_examples": [
+        {
+          "prompt": "A 23-pound unmanned airplane is in a 60° bank while maintaining altitude. Approximate structural load?",
+          "steps": [
+            "From Figure 2, 60° bank is about 2 G.",
+            "23 × 2 = 46."
+          ],
+          "answer": "Approximately 46 pounds."
+        },
+        {
+          "prompt": "A 33-pound aircraft is in a 30° level bank. Figure 2 shows about 1.15 G. Approximate load?",
+          "steps": [
+            "33 × 1.15 ≈ 37.95."
+          ],
+          "answer": "Approximately 38 pounds."
+        }
+      ],
+      "common_test_traps": [
+        "Using bank angle itself as the multiplier (for example, 60 × weight).",
+        "Assuming 60° bank means 1.6 G; the chart is not a decimal version of bank angle.",
+        "Forgetting that the chart scenario assumes the aircraft is maintaining altitude in the banked turn.",
+        "Using moment = weight × arm when the question is asking about bank-angle load factor."
+      ],
+      "knowledge_check": [
+        {
+          "q": "At approximately 60° of bank in a level turn, the load factor is about?",
+          "choices": [
+            "1.0 G",
+            "1.2 G",
+            "2.0 G",
+            "6.0 G"
+          ],
+          "answer": 2,
+          "explanation": "A 60-degree level bank is approximately 2 G."
+        },
+        {
+          "q": "A 20-pound aircraft at 2 G imposes approximately what structural load?",
+          "choices": [
+            "10 lb",
+            "20 lb",
+            "40 lb",
+            "200 lb"
+          ],
+          "answer": 2,
+          "explanation": "20 × 2 = 40 pounds."
+        },
+        {
+          "q": "Load factor changes most dramatically as bank angle becomes?",
+          "choices": [
+            "Steeper",
+            "Shallower",
+            "Zero",
+            "Unrelated"
+          ],
+          "answer": 0,
+          "explanation": "The curve rises rapidly at steep bank angles."
+        },
+        {
+          "q": "Which formula matches a bank-angle load-factor question?",
+          "choices": [
+            "Weight × load factor",
+            "Weight × arm",
+            "MSL - AGL",
+            "Visibility × wind"
+          ],
+          "answer": 0,
+          "explanation": "Structural load is aircraft weight multiplied by the load factor read from Figure 2."
+        }
+      ],
+      "recommended_videos": [
+        {
+          "title": "FREE FAA Part 107 Remote Pilot Lesson: sUAS Loading and Performance",
+          "channel": "TheDroneCoach",
+          "url": "https://www.youtube.com/watch?v=aM3wm-3u_hw",
+          "use": "Loading, performance, stability, center of gravity and test-style review."
+        },
+        {
+          "title": "UAV Loading and Performance - Part 1",
+          "channel": "Jeremy Maurer",
+          "url": "https://www.youtube.com/watch?v=qMevJBomsWg",
+          "use": "Alternate loading/performance explanation for Part 107 students."
+        }
+      ],
+      "mastery_standard": "Student reads the correct load factor and computes approximate structural load on 4 of 5 Figure 2 problems.",
+      "instructor_note": "Keep the arithmetic simple; the educational target is chart interpretation and the concept of rapidly increasing load at steep bank angles."
+    }
+  ]
+}

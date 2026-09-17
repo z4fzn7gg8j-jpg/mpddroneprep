@@ -191,6 +191,50 @@ export default function QuestionEditor() {
             </div>
           ))}
 
+          <div className="card" style={{ marginBottom: 10, padding: 10, background: "var(--mist)" }}>
+            <h3 style={{ marginTop: 0, fontSize: "0.95rem" }}>Teaching content</h3>
+            <label style={{ display: "block", marginBottom: 8 }}>
+              Full explanation
+              <textarea
+                value={draft.teachingExplanation ?? ""}
+                onChange={(e) => setDraft({ ...draft, teachingExplanation: e.target.value || undefined })}
+                rows={3}
+                placeholder="Full explanation tying the answer to the rule or figure"
+                style={{ display: "block", width: "100%", padding: 6, marginTop: 4, border: "1px solid var(--line)", borderRadius: 6 }}
+              />
+            </label>
+            <label style={{ display: "block", marginBottom: 8 }}>
+              How to solve it
+              <textarea
+                value={draft.howToSolve ?? ""}
+                onChange={(e) => setDraft({ ...draft, howToSolve: e.target.value || undefined })}
+                rows={2}
+                placeholder="Repeatable method for this type of question"
+                style={{ display: "block", width: "100%", padding: 6, marginTop: 4, border: "1px solid var(--line)", borderRadius: 6 }}
+              />
+            </label>
+            <label style={{ display: "block", marginBottom: 8 }}>
+              Memory tip
+              <input
+                type="text"
+                value={draft.memoryTip ?? ""}
+                onChange={(e) => setDraft({ ...draft, memoryTip: e.target.value || undefined })}
+                placeholder="Short takeaway or mnemonic"
+                style={{ display: "block", width: "100%", padding: 6, marginTop: 4, border: "1px solid var(--line)", borderRadius: 6 }}
+              />
+            </label>
+            <label style={{ display: "block" }}>
+              Review prompt
+              <input
+                type="text"
+                value={draft.reviewPrompt ?? ""}
+                onChange={(e) => setDraft({ ...draft, reviewPrompt: e.target.value || undefined })}
+                placeholder="Prompts the learner to restate the reasoning"
+                style={{ display: "block", width: "100%", padding: 6, marginTop: 4, border: "1px solid var(--line)", borderRadius: 6 }}
+              />
+            </label>
+          </div>
+
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10, marginTop: 10 }}>
             <label>
               Area

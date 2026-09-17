@@ -7,10 +7,12 @@ import type {
 import {
   SIMULATION_DISTRIBUTION,
   SIMULATION_TOTAL,
+  FAA_PUBLISHED_RANGE,
 } from "./types";
 import { sampleQuestions } from "./sampling";
 import { loadAttempts, saveAttempt, getDemoOfficer } from "./storage";
 import { scoreAttempt } from "./scoring";
+import { mapQuestionsInCategory, type MapCategory } from "./mapCategories";
 
 const SIMULATION_TIME_LIMIT_MS = 2 * 60 * 60 * 1000;
 
@@ -26,10 +28,40 @@ function recentQuestionIds(officerId: string, limit = 3): string[] {
   return attempts.flatMap((a) => a.questionIds);
 }
 
+/**
+ * Scales the blueprint percentages to a whole-question distribution for an
+ * arbitrary quiz size, using largest-remainder rounding so the parts
+ * always sum exactly to `count` (matches how the 60-question simulation's
+ * fixed 29/12/3/1/15 mix was derived from 48/20/5/2/25, just generalized
+ * to any requested length).
+ */
+export function weightedDistribution(count: number): Record<FaaArea, number> {
+  const areas = Object.keys(FAA_PUBLISHED_RANGE) as FaaArea[];
+  const raw = areas.map((a) => ({ area: a, exact: (FAA_PUBLISHED_RANGE[a][0] / 100) * count }));
+  const floors = raw.map((r) => ({ area: r.area, base: Math.floor(r.exact), remainder: r.exact - Math.floor(r.exact) }));
+  let assigned = floors.reduce((sum, f) => sum + f.base, 0);
+  let remaining = count - assigned;
+  const byRemainder = [...floors].sort((a, b) => b.remainder - a.remainder);
+  const result: Record<FaaArea, number> = {
+    regulations: 0,
+    airspace: 0,
+    weather: 0,
+    loading_performance: 0,
+    operations: 0,
+  };
+  for (const f of floors) result[f.area] = f.base;
+  for (let i = 0; i < byRemainder.length && remaining > 0; i++, remaining--) {
+    result[byRemainder[i].area] += 1;
+  }
+  return result;
+}
+
 export interface StartAttemptOptions {
   mode: AttemptMode;
   areaFilter?: FaaArea | "mixed";
-  count?: number; // for practice quizzes: 10, 20, 30
+  skillCategory?: string; // for Study Mode's Map & Chart Reading sub-categories, cuts across areas
+  flatMixed?: boolean; // bypass blueprint area-weighting and just flat-shuffle the given pool (e.g. Map & Chart Mastery Check, which is pre-filtered to visual questions and shouldn't be re-weighted by FAA area percentages)
+  count?: number; // for practice quizzes: 10, 20, 30, 40, 50, or custom
   pool: Question[];
 }
 
@@ -54,16 +86,33 @@ export function startAttempt(opts: StartAttemptOptions): Attempt {
   } else if (opts.mode === "practice") {
     const count = opts.count ?? 20;
     const area = opts.areaFilter && opts.areaFilter !== "mixed" ? opts.areaFilter : null;
-    const pool = area ? opts.pool.filter((q) => q.area === area) : opts.pool;
-    const published = pool.filter((q) => q.status === "published");
-    const shuffled = [...published].sort(() => Math.random() - 0.5);
-    questionIds = shuffled.slice(0, Math.min(count, shuffled.length)).map((q) => q.id);
+    if (area || opts.flatMixed) {
+      const published = opts.pool.filter((q) => (area ? q.area === area : true) && q.status === "published");
+      const shuffled = [...published].sort(() => Math.random() - 0.5);
+      questionIds = shuffled.slice(0, Math.min(count, shuffled.length)).map((q) => q.id);
+    } else {
+      // "All Categories": weighted by the current blueprint, not a flat
+      // shuffle -- otherwise a quiz would over-represent small-share areas
+      // like Loading & Performance relative to the real exam.
+      const qs = sampleQuestions({
+        distribution: weightedDistribution(count),
+        pool: opts.pool,
+        recentQuestionIds: recent,
+      });
+      questionIds = qs.map((q) => q.id);
+    }
   } else {
     // study mode: pull all published questions for the selected area/topic,
-    // unrestricted practice, no fixed count.
-    const area = opts.areaFilter && opts.areaFilter !== "mixed" ? opts.areaFilter : null;
-    const pool = area ? opts.pool.filter((q) => q.area === area) : opts.pool;
-    questionIds = pool.filter((q) => q.status === "published").map((q) => q.id);
+    // or -- for a Map & Chart Reading skill category -- pull matching
+    // visual questions across every area, unrestricted practice, no fixed count.
+    if (opts.skillCategory) {
+      const published = opts.pool.filter((q) => q.status === "published");
+      questionIds = mapQuestionsInCategory(published, opts.skillCategory as MapCategory).map((q) => q.id);
+    } else {
+      const area = opts.areaFilter && opts.areaFilter !== "mixed" ? opts.areaFilter : null;
+      const pool = area ? opts.pool.filter((q) => q.area === area) : opts.pool;
+      questionIds = pool.filter((q) => q.status === "published").map((q) => q.id);
+    }
   }
 
   const attempt: Attempt = {

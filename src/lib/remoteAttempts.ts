@@ -45,6 +45,8 @@ function rowToAttempt(row: any, answers: Record<string, { choiceId: string | nul
 export async function startAttemptRemote(opts: {
   mode: AttemptMode;
   areaFilter?: FaaArea | "mixed";
+  skillCategory?: string;
+  flatMixed?: boolean;
   count?: number;
 }): Promise<Attempt> {
   const result = await callFunction("start-attempt", opts);
@@ -74,6 +76,13 @@ export async function resendReportRemote(attemptId: string): Promise<void> {
 
 export async function reportQuestionProblemRemote(questionId: string, attemptId: string | undefined, note: string): Promise<void> {
   await callFunction("report-question-problem", { questionId, attemptId, note });
+}
+
+export async function deleteAttemptRemote(attemptId: string): Promise<void> {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error("Not connected to Supabase.");
+  const { error } = await supabase.from("part107_attempts").delete().eq("id", attemptId);
+  if (error) throw new Error(error.message);
 }
 
 /** Reads the signed-in officer's own attempts directly via RLS (no function needed for reads). */
