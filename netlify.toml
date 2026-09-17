@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
+
+# Runs the email queue worker every 2 minutes. Netlify scheduled functions
+# require a paid plan tier that supports them -- confirm current
+# documentation/pricing before relying on this; if unavailable, trigger
+# send-queued-emails via an external cron hitting its HTTP endpoint instead.
+[functions."send-queued-emails"]
+  schedule = "*/2 * * * *"
+
