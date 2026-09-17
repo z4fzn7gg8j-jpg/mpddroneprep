@@ -26,3 +26,4 @@
 # send-queued-emails via an external cron hitting its HTTP endpoint instead.
 [functions."send-queued-emails"]
   schedule = "*/2 * * * *"
+
