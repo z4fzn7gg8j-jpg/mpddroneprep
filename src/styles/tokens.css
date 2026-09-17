@@ -1,0 +1,144 @@
+/*
+  Design plan (MPD Part 107 Readiness)
+  Color: navy #0B2545 (primary/nav), deep navy #071A33 (header bg), white #FFFFFF,
+         gold #B8862E (reserved for readiness states + primary actions only),
+         slate #4B5A6B (secondary text), mist #F3F5F8 (page bg), line #DCE2E9 (borders),
+         success #1E7145, warn #9A6400, danger #A32F26.
+  Type: "Source Serif 4" for headings/report titles (manual/authoritative feel),
+        "Inter" for UI, tables, and body copy (legible at small sizes, dense data).
+  Layout: left-aligned, top nav in deep navy, tab-based mode switcher (not a sidebar),
+          thin gold rule under section headers used as a structural divider (not decoration),
+          numbered steps reserved for genuine sequences (exam navigator, setup guide).
+  Principle: reads as an operations/training console, not a marketing site. Gold is spent
+  in one place -- readiness status and primary calls to action -- so it keeps meaning.
+*/
+
+:root {
+  --navy-900: #071A33;
+  --navy-800: #0B2545;
+  --navy-700: #163B66;
+  --navy-100: #E7ECF3;
+  --gold-600: #9C6E1F;
+  --gold-500: #B8862E;
+  --gold-100: #F5E9D2;
+  --white: #FFFFFF;
+  --mist: #F3F5F8;
+  --line: #DCE2E9;
+  --slate-700: #33404D;
+  --slate-500: #4B5A6B;
+  --slate-300: #8593A2;
+  --success-700: #1E7145;
+  --success-100: #E3F3E9;
+  --warn-700: #9A6400;
+  --warn-100: #FBF0DA;
+  --danger-700: #A32F26;
+  --danger-100: #FAE6E4;
+
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --focus-ring: 0 0 0 3px rgba(184, 134, 46, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--mist);
+  color: var(--slate-700);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-serif); color: var(--navy-900); font-weight: 600; margin: 0 0 var(--space-2); }
+h1 { font-size: 2rem; line-height: 1.2; }
+h2 { font-size: 1.5rem; line-height: 1.25; }
+h3 { font-size: 1.15rem; line-height: 1.3; }
+p { margin: 0 0 var(--space-3); max-width: 68ch; }
+
+a { color: var(--navy-700); }
+a:hover { color: var(--gold-600); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.section-title {
+  border-bottom: 2px solid var(--gold-500);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  display: inline-block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.btn-primary { background: var(--navy-800); color: var(--white); }
+.btn-primary:hover { background: var(--navy-700); }
+.btn-gold { background: var(--gold-500); color: var(--navy-900); }
+.btn-gold:hover { background: var(--gold-600); color: var(--white); }
+.btn-outline { background: var(--white); color: var(--navy-800); border-color: var(--line); }
+.btn-outline:hover { border-color: var(--navy-700); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.badge-developing { background: var(--danger-100); color: var(--danger-700); }
+.badge-nearly { background: var(--warn-100); color: var(--warn-700); }
+.badge-one { background: var(--navy-100); color: var(--navy-700); }
+.badge-ready { background: var(--gold-100); color: var(--gold-600); }
+
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+th { color: var(--slate-500); font-weight: 600; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
