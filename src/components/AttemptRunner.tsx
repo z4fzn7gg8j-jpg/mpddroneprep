@@ -219,7 +219,7 @@ export default function AttemptRunner({
           {showTools && (
             <>
               <Calculator />
-              <ScratchPad />
+              <ScratchPad attemptId={attempt.id} />
             </>
           )}
         </div>
