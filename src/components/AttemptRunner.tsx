@@ -5,6 +5,7 @@ import QuestionCard from "./QuestionCard";
 import Timer from "./Timer";
 import Calculator from "./Calculator";
 import ScratchPad from "./ScratchPad";
+import { figureSrc } from "../lib/figures";
 
 interface AttemptRunnerProps {
   attempt: Attempt;
@@ -14,6 +15,35 @@ interface AttemptRunnerProps {
   showFeedbackImmediately: boolean; // Study Mode = true; everything else = false until submit
   showNavigator: boolean; // Exam Simulation = true
   showTools: boolean; // calculator + scratch pad, available during simulation
+  showLegend?: boolean; // quick-access sectional chart legend, for symbol lookups mid-question (Practice + Exam)
+}
+
+function ChartLegendButton() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="card" style={{ marginTop: 12 }}>
+      <button type="button" className="btn btn-outline" onClick={() => setOpen(true)} style={{ width: "100%" }}>
+        View Sectional Chart Legend
+      </button>
+      {open && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setOpen(false)}
+          style={{ position: "fixed", inset: 0, background: "rgba(7,26,51,0.92)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
+        >
+          <div onClick={(e) => e.stopPropagation()} style={{ maxWidth: "95vw", maxHeight: "90vh", overflow: "auto" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+              <button type="button" className="btn btn-gold" onClick={() => setOpen(false)}>
+                Close
+              </button>
+            </div>
+            <img src={figureSrc("faa-legend1-sectional-chart")} alt="Sectional chart legend" style={{ maxWidth: "100%", maxHeight: "80vh" }} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function AttemptRunner({
@@ -24,6 +54,7 @@ export default function AttemptRunner({
   showFeedbackImmediately,
   showNavigator,
   showTools,
+  showLegend,
 }: AttemptRunnerProps) {
   const [index, setIndex] = useState(0);
   const questions = useMemo(
@@ -63,7 +94,7 @@ export default function AttemptRunner({
   }
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: showNavigator || showTools ? "1fr 260px" : "1fr", gap: 20 }}>
+    <div className={`attempt-layout${showNavigator || showTools || showLegend ? " attempt-layout--with-sidebar" : ""}`}>
       <div>
         {attempt.deadline && !attempt.finalized && (
           <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 12 }}>
@@ -117,7 +148,7 @@ export default function AttemptRunner({
       </div>
 
 
-      {(showNavigator || showTools) && (
+      {(showNavigator || showTools || showLegend) && (
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {showNavigator && (
             <div className="card">
@@ -152,6 +183,7 @@ export default function AttemptRunner({
               <ScratchPad attemptId={attempt.id} />
             </>
           )}
+          {showLegend && <ChartLegendButton />}
         </div>
       )}
     </div>

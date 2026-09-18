@@ -89,7 +89,8 @@ export default function Home() {
         </div>
       )}
 
-      <h1>MPD Part 107 Readiness{!demo && officerName ? ` — ${officerName}` : ""}</h1>
+      <h1>MPD Part 107 Readiness</h1>
+      {!demo && officerName && <p style={{ fontSize: "1.1rem", color: "var(--slate-500)", marginTop: -8 }}>Welcome, {officerName}</p>}
       <p>
         Study for the FAA Unmanned Aircraft General (UAG) knowledge test and track when you're ready to schedule it.
         This is an internal study tool, not an FAA certification or a guarantee of passing the official exam.

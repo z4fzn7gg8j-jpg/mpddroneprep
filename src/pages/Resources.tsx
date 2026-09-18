@@ -5,9 +5,8 @@ export default function Resources() {
     <div>
       <h1>Topic resource library</h1>
       <p>
-        Every question in this bank is grounded in the FAA's own testing supplement, linked below. It contains the
-        sectional chart legend, all figures used throughout the bank, and the weather and performance products
-        referenced in explanations.
+        The official FAA source material this question bank is grounded in, plus practical guides for actually
+        scheduling and taking the real exam.
       </p>
       <div className="card">
         <table>

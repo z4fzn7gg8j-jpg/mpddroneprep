@@ -18,15 +18,30 @@ export default function StudyMode() {
     return (
       <div>
         <h1>Study Mode</h1>
-        <p>Pick an FAA area, or study everything mixed together. Feedback and the full explanation show immediately after you answer, with FAA references and learning links.</p>
         {error && <p style={{ color: "var(--danger-700)" }}>{error}</p>}
+
+        <div className="card" style={{ marginBottom: 24, borderColor: "var(--gold-500)", borderWidth: 2 }}>
+          <h2 style={{ marginTop: 0 }}>Map & Chart Reading</h2>
+          <p style={{ marginBottom: 12 }}>
+            A short guided course for reading FAA sectional charts, METAR/TAF, and the load factor chart --
+            14 lessons covering Class B/C/D/E airspace, lat/long, airport symbols, special-use airspace, and
+            more. Each lesson teaches the method with a real FAA figure, then lets you practice it. Also
+            includes a category-by-category Practice mode and a mixed Mastery Check if you just want reps.
+          </p>
+          <Link to="/study/map-charts" className="btn btn-gold" style={{ textDecoration: "none" }}>
+            Learn how to read maps &amp; charts &rarr;
+          </Link>
+        </div>
+
+        <h2 className="section-title">Study by area</h2>
+        <p style={{ color: "var(--slate-500)", marginTop: -6 }}>
+          Unrestricted practice, question by question, with full feedback and explanations right after each
+          answer. Good for a few questions at a time on a specific area.
+        </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
           <button className="btn btn-primary" disabled={busy} onClick={() => begin({ mode: "study", areaFilter: "mixed", pool: PUBLISHED_QUESTIONS })}>
             All areas mixed
           </button>
-          <Link to="/study/map-charts" className="btn btn-gold" style={{ textDecoration: "none", textAlign: "center" }}>
-            Map & Chart Reading &rarr;
-          </Link>
           {AREAS.map((a) => (
             <button
               key={a}

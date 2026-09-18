@@ -152,7 +152,7 @@ export default function LessonPage() {
         <h2 className="section-title" style={{ fontSize: "1rem" }}>
           Quick knowledge check
         </h2>
-        <KnowledgeCheck items={lesson.knowledge_check} onComplete={handleComplete} />
+        <KnowledgeCheck key={lesson.id} items={lesson.knowledge_check} onComplete={handleComplete} />
         {checkScore !== null && (
           <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <span className="badge badge-ready">Knowledge check: {Math.round(checkScore * 100)}%</span>

@@ -35,6 +35,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const supabase = getSupabase();
     if (!supabase) return;
     const email = currentSession.user.email ?? "";
+    // Most department emails are firstname.lastname@... -- derive just the
+    // first name for a friendlier greeting than the full email local-part.
+    // Falls back to the whole local-part (capitalized) if there's no dot.
+    const localPart = email.split("@")[0] ?? "";
+    const firstSegment = localPart.split(".")[0] ?? localPart;
+    const displayName = firstSegment ? firstSegment.charAt(0).toUpperCase() + firstSegment.slice(1) : localPart;
     // Create this officer's row on first sign-in (RLS only allows a user
     // to insert a row for themselves, with role forced to 'officer' --
     // see the part107_officers_insert_self policy). Safe to call every
@@ -42,7 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error: upsertErr } = await supabase
       .from("part107_officers")
       .upsert(
-        { id: currentSession.user.id, email, name: email.split("@")[0], role: "officer" },
+        { id: currentSession.user.id, email, name: displayName, role: "officer" },
         { onConflict: "id", ignoreDuplicates: true }
       );
     if (upsertErr) {

@@ -4,17 +4,35 @@
     "title": "Airman Knowledge Testing Supplement for Sport Pilot, Recreational Pilot, Remote Pilot, and Private Pilot",
     "publisher": "Federal Aviation Administration",
     "url": "https://www.faa.gov/sites/faa.gov/files/training_testing/testing/supplements/sport_rec_private_akts.pdf",
-    "topic": "Full test supplement -- sectional chart legend, figures, weather products, and performance charts used throughout this question bank",
-    "lastReviewed": "2026-09-17",
+    "topic": "Full test supplement -- every figure, chart, and weather product used throughout this question bank",
+    "lastReviewed": "2026-09-18",
     "status": "ok"
   },
   {
-    "id": "RES-PSI-BULLETIN",
-    "title": "UAG Applicant Information Bulletin",
+    "id": "RES-SECTIONAL-LEGEND",
+    "title": "Sectional Chart Legend (Legend 1)",
+    "publisher": "Federal Aviation Administration",
+    "url": "https://www.faa.gov/sites/faa.gov/files/training_testing/testing/supplements/sport_rec_private_akts.pdf#page=13",
+    "topic": "Just the symbol/legend page -- what the colors, lines, and icons on a sectional chart mean, without paging through the whole supplement",
+    "lastReviewed": "2026-09-18",
+    "status": "ok"
+  },
+  {
+    "id": "RES-SIGNUP-GUIDE",
+    "title": "How to Sign Up for the FAA Part 107 (UAG) Knowledge Test",
+    "publisher": "MPD Part 107 Readiness",
+    "url": "/resources/how-to-sign-up-for-the-test.docx",
+    "topic": "Step-by-step: FAA Tracking Number, PSI account, scheduling, what to bring, and what happens after the test",
+    "lastReviewed": "2026-09-18",
+    "status": "ok"
+  },
+  {
+    "id": "RES-PSI-LOCATOR",
+    "title": "Find a Testing Center (PSI locator)",
     "publisher": "PSI Services LLC (FAA's testing vendor)",
-    "url": "https://media.psiexams.com/faa/UAG_Information_Bulletin.pdf",
-    "topic": "Current test blueprint (effective September 29, 2025) -- the content-percentage weighting this app's Exam Simulation is based on",
-    "lastReviewed": "2026-09-17",
+    "url": "https://faa.psiexams.com",
+    "topic": "Search \"Maricopa, AZ 85138\" with a 50-mile radius, exam \"Unmanned Aircraft General \u2013 Small (UAG)\" -- always current, since testing centers open/close over time and a fixed list here would go stale",
+    "lastReviewed": "2026-09-18",
     "status": "ok"
   }
 ]

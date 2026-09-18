@@ -126,6 +126,7 @@ export default function ExamSimulation() {
         showFeedbackImmediately={false}
         showNavigator
         showTools
+        showLegend
       />
     </div>
   );

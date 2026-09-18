@@ -85,6 +85,10 @@ export async function deleteAttemptRemote(attemptId: string): Promise<void> {
   if (error) throw new Error(error.message);
 }
 
+export async function resetSharedPasswordRemote(newPassword: string): Promise<{ updated: number; total: number; failed: string[] }> {
+  return callFunction("reset-shared-password", { newPassword });
+}
+
 /** Reads the signed-in officer's own attempts directly via RLS (no function needed for reads). */
 export async function listMyAttempts(): Promise<Attempt[]> {
   const supabase = getSupabase();

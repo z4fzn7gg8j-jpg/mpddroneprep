@@ -6,7 +6,7 @@ import { FAA_AREA_LABELS, type FaaArea, type Attempt } from "../lib/types";
 import ReadinessBadge from "../components/ReadinessBadge";
 import { Link } from "react-router-dom";
 import { useAuth } from "../lib/auth";
-import { listAllAttemptsForCoordinator, deleteAttemptRemote } from "../lib/remoteAttempts";
+import { listAllAttemptsForCoordinator, deleteAttemptRemote, resetSharedPasswordRemote } from "../lib/remoteAttempts";
 
 function toCsv(rows: string[][]): string {
   return rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
@@ -85,6 +85,10 @@ export default function CoordinatorDashboard() {
   const [officerStats, setOfficerStats] = useState<OfficerStats[]>([]);
   const [loading, setLoading] = useState(!demo);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [resetStatus, setResetStatus] = useState<"idle" | "working" | "error">("idle");
+  const [resetMessage, setResetMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (demo) {
@@ -124,6 +128,38 @@ export default function CoordinatorDashboard() {
     setOfficerStats((prev) =>
       prev.map((o) => ({ ...o, attempts: o.attempts.filter((a) => a.id !== attemptId) }))
     );
+  }
+
+  async function handleResetPassword() {
+    if (newPassword.length < 8) {
+      setResetStatus("error");
+      setResetMessage("Password must be at least 8 characters.");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setResetStatus("error");
+      setResetMessage("Passwords don't match.");
+      return;
+    }
+    if (!confirm(`This resets every officer's login to the new password immediately -- everyone signs in with it starting now. Continue?`)) {
+      return;
+    }
+    setResetStatus("working");
+    setResetMessage(null);
+    try {
+      const result = await resetSharedPasswordRemote(newPassword);
+      setResetStatus("idle");
+      setResetMessage(
+        result.failed.length === 0
+          ? `Done -- updated ${result.updated} of ${result.total} officer accounts.`
+          : `Updated ${result.updated} of ${result.total}. ${result.failed.length} failed: ${result.failed.join("; ")}`
+      );
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (e: any) {
+      setResetStatus("error");
+      setResetMessage(e.message ?? "Could not reset the password.");
+    }
   }
 
   if (!demo && loading) return <p>Loading...</p>;
@@ -230,7 +266,7 @@ export default function CoordinatorDashboard() {
                   {expanded === o.id && (
                     <tr>
                       <td colSpan={5} style={{ background: "var(--mist)", padding: 16 }}>
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
                           <div>
                             <h3 style={{ marginTop: 0, fontSize: "1rem" }}>Area breakdown</h3>
                             {o.areaBreakdown.length === 0 ? (
@@ -358,6 +394,39 @@ export default function CoordinatorDashboard() {
           Open Question Editor
         </Link>
       </div>
+
+      {!demo && (
+        <div className="card" style={{ marginTop: 20 }}>
+          <h2 className="section-title">Department login password</h2>
+          <p style={{ color: "var(--slate-500)" }}>
+            Everyone signs in with the same password. Setting a new one here resets every existing officer's
+            account to it immediately -- there's no need to tell people individually beforehand, but they will
+            need the new password the next time they sign in.
+          </p>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", maxWidth: 420 }}>
+            <input
+              type="password"
+              placeholder="New password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              style={{ flex: "1 1 180px", padding: 8, border: "1px solid var(--line)", borderRadius: 6 }}
+            />
+            <input
+              type="password"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              style={{ flex: "1 1 180px", padding: 8, border: "1px solid var(--line)", borderRadius: 6 }}
+            />
+          </div>
+          <button className="btn btn-primary" onClick={handleResetPassword} disabled={resetStatus === "working"} style={{ marginTop: 10 }}>
+            {resetStatus === "working" ? "Updating..." : "Update password for all officers"}
+          </button>
+          {resetMessage && (
+            <p style={{ marginTop: 10, color: resetStatus === "error" ? "var(--danger-700)" : "var(--success-700)" }}>{resetMessage}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

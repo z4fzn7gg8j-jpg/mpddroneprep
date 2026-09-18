@@ -145,6 +145,7 @@ export default function PracticeQuiz() {
         showFeedbackImmediately={true}
         showNavigator={false}
         showTools={false}
+        showLegend={true}
       />
     </div>
   );
