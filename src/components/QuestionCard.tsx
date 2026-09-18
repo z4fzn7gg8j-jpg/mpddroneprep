@@ -10,7 +10,8 @@ interface QuestionCardProps {
   total: number;
   selectedChoiceId: string | null;
   flagged: boolean;
-  showFeedback: boolean; // true in Study Mode; false during a live exam/assessment
+  showFeedback: boolean; // true only after a Study Mode answer is submitted, or in a completed review
+  selectionLocked?: boolean;
   onSelect: (choiceId: string) => void;
   onToggleFlag?: () => void;
 }
@@ -22,6 +23,7 @@ export default function QuestionCard({
   selectedChoiceId,
   flagged,
   showFeedback,
+  selectionLocked = false,
   onSelect,
   onToggleFlag,
 }: QuestionCardProps) {
@@ -81,13 +83,14 @@ export default function QuestionCard({
                 borderRadius: 6,
                 padding: "10px 12px",
                 marginBottom: 8,
-                cursor: "pointer",
+                cursor: selectionLocked ? "default" : "pointer",
               }}
             >
               <input
                 type="radio"
                 name={`q-${question.id}`}
                 checked={isSelected}
+                disabled={selectionLocked}
                 onChange={() => onSelect(choice.id)}
                 style={{ marginTop: 3 }}
               />

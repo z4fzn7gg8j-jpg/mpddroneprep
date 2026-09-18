@@ -51,7 +51,7 @@ export default function LessonPage() {
   function startPractice() {
     const pool = lessonPracticePool(PUBLISHED_QUESTIONS, lesson.question_bank_categories);
     setPracticing(true);
-    begin({ mode: "practice", count: Math.min(15, pool.length), pool });
+    begin({ mode: "study", count: Math.min(15, pool.length), pool });
   }
 
   if (practicing && attempt) {
@@ -75,7 +75,15 @@ export default function LessonPage() {
             </div>
           </div>
         ) : (
-          <AttemptRunner attempt={attempt} onSelect={select} onSubmit={submit} showFeedbackImmediately={false} showNavigator={false} showTools={false} />
+          <AttemptRunner
+            attempt={attempt}
+            onSelect={select}
+            onSubmit={submit}
+            showFeedbackImmediately
+            showNavigator={false}
+            showTools={false}
+            onStudyDone={() => setPracticing(false)}
+          />
         )}
       </div>
     );

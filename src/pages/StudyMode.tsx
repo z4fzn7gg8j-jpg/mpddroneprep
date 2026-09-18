@@ -1,5 +1,4 @@
-import { useSearchParams } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import type { FaaArea } from "../lib/types";
 import { FAA_AREA_LABELS } from "../lib/types";
 import { PUBLISHED_QUESTIONS } from "../lib/questionBank";
@@ -10,8 +9,7 @@ const AREAS = Object.keys(FAA_AREA_LABELS) as FaaArea[];
 
 export default function StudyMode() {
   const [params] = useSearchParams();
-  const navigate = useNavigate();
-  const { attempt, begin, select, submit, busy, error } = useAttemptController();
+  const { attempt, setAttempt, begin, select, submit, busy, error } = useAttemptController();
   const presetArea = (params.get("area") as FaaArea | null) ?? null;
 
   if (!attempt) {
@@ -35,8 +33,8 @@ export default function StudyMode() {
 
         <h2 className="section-title">Study by area</h2>
         <p style={{ color: "var(--slate-500)", marginTop: -6 }}>
-          Unrestricted practice, question by question, with full feedback and explanations right after each
-          answer. Good for a few questions at a time on a specific area.
+          Unrestricted practice, one question at a time. Choose an answer and submit it to see the correct
+          answer and full explanation immediately. Study sessions are not saved to History.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
           <button className="btn btn-primary" disabled={busy} onClick={() => begin({ mode: "study", areaFilter: "mixed", pool: PUBLISHED_QUESTIONS })}>
@@ -64,10 +62,8 @@ export default function StudyMode() {
       <AttemptRunner
         attempt={attempt}
         onSelect={select}
-        onSubmit={async () => {
-          const a = await submit();
-          if (a) navigate(`/results/${a.id}`);
-        }}
+        onSubmit={submit}
+        onStudyDone={() => setAttempt(null)}
         showFeedbackImmediately
         showNavigator={false}
         showTools={false}

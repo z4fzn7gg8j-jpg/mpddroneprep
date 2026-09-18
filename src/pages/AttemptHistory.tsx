@@ -22,11 +22,11 @@ export default function AttemptHistory() {
       if (demo) {
         const officer = getDemoOfficer();
         setOfficerId(officer.id);
-        setAttempts(loadAttempts().filter((a) => a.officerId === officer.id && a.finalized));
+        setAttempts(loadAttempts().filter((a) => a.officerId === officer.id && a.finalized && a.mode !== "study"));
         setLoading(false);
       } else {
         const mine = await listMyAttempts();
-        setAttempts(mine.filter((a) => a.finalized));
+        setAttempts(mine.filter((a) => a.finalized && a.mode !== "study"));
         setLoading(false);
       }
     }
@@ -58,16 +58,15 @@ export default function AttemptHistory() {
     <div>
       <h1>Attempt History</h1>
       <p style={{ color: "var(--slate-500)" }}>
-        Every completed attempt, across every mode. Open any of them for the full question-by-question review,
-        including the teaching explanations -- not just the ones from Exam Simulation.
+        Practice Quizzes and Exam Simulations are saved here. Open any completed attempt for the full
+        question-by-question review, including your answer, the correct answer, and the teaching explanation.
       </p>
 
       <div className="card" style={{ marginBottom: 16, display: "inline-block" }}>
         <label style={{ fontSize: "0.9rem" }}>
           Filter by mode{" "}
           <select value={modeFilter} onChange={(e) => setModeFilter(e.target.value as AttemptMode | "all")} style={{ padding: 6, marginLeft: 6 }}>
-            <option value="all">All modes</option>
-            <option value="study">Study Mode</option>
+            <option value="all">All saved tests</option>
             <option value="practice">Practice Quiz</option>
             <option value="simulation">Exam Simulation</option>
           </select>

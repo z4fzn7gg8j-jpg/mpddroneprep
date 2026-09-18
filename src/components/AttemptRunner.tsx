@@ -12,10 +12,11 @@ interface AttemptRunnerProps {
   onSelect: (questionId: string, choiceId: string) => void;
   onToggleFlag?: (questionId: string) => void;
   onSubmit: () => void;
-  showFeedbackImmediately: boolean; // Study Mode = true; everything else = false until submit
+  showFeedbackImmediately: boolean; // Study Mode = submit each answer, then reveal feedback
   showNavigator: boolean; // Exam Simulation = true
   showTools: boolean; // calculator + scratch pad, available during simulation
   showLegend?: boolean; // quick-access sectional chart legend, for symbol lookups mid-question (Practice + Exam)
+  onStudyDone?: () => void;
 }
 
 function ChartLegendButton() {
@@ -55,23 +56,24 @@ export default function AttemptRunner({
   showNavigator,
   showTools,
   showLegend,
+  onStudyDone,
 }: AttemptRunnerProps) {
   const [index, setIndex] = useState(0);
+  const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
   const questions = useMemo(
     () => attempt.questionIds.map((id) => ALL_QUESTIONS.find((q) => q.id === id)!).filter(Boolean),
     [attempt.questionIds]
   );
   const q = questions[index];
   const ans = q ? attempt.answers[q.id] : undefined;
+  const currentAnswerRevealed = !!(q && showFeedbackImmediately && revealedAnswers[q.id]);
 
-  // Current streak of consecutive correct answers ending at this question,
-  // scanning backward by position so it still makes sense if someone jumps
-  // around with Previous/Next. Only meaningful where feedback is immediate
-  // (Study Mode) -- elsewhere, correctness isn't known until submission.
+  // Current streak of consecutive submitted-and-correct Study Mode answers.
   let streak = 0;
   if (showFeedbackImmediately) {
     for (let i = index; i >= 0; i--) {
       const qq = questions[i];
+      if (!revealedAnswers[qq.id]) break;
       const a = attempt.answers[qq.id];
       if (a?.choiceId && a.choiceId === qq.correctChoiceId) streak++;
       else break;
@@ -80,6 +82,16 @@ export default function AttemptRunner({
 
   function handleExpire() {
     if (!attempt.finalized) onSubmit();
+  }
+
+  function revealCurrentAnswer() {
+    if (!q || !ans?.choiceId) return;
+    setRevealedAnswers((prev) => ({ ...prev, [q.id]: true }));
+  }
+
+  function goToNextStudyQuestion() {
+    setIndex((i) => Math.min(questions.length - 1, i + 1));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   const unansweredCount = questions.filter((qq) => !attempt.answers[qq.id]?.choiceId).length;
@@ -114,39 +126,67 @@ export default function AttemptRunner({
           total={questions.length}
           selectedChoiceId={ans?.choiceId ?? null}
           flagged={ans?.flagged ?? false}
-          showFeedback={showFeedbackImmediately}
+          showFeedback={currentAnswerRevealed}
+          selectionLocked={currentAnswerRevealed}
           onSelect={(choiceId) => onSelect(q.id, choiceId)}
           onToggleFlag={showNavigator && onToggleFlag ? () => onToggleFlag(q.id) : undefined}
         />
 
-        <div style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 12 }}>
-          <button className="btn btn-outline" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
-            ← Previous
-          </button>
-          <button
-            className="btn btn-outline"
-            onClick={() => setIndex((i) => Math.min(questions.length - 1, i + 1))}
-            disabled={index === questions.length - 1}
-          >
-            Next →
-          </button>
-        </div>
-
-        {!attempt.finalized && (
-          <div className="card" style={{ marginTop: 16 }}>
-            <p style={{ margin: 0 }}>
-              {unansweredCount} unanswered{showNavigator ? `, ${flaggedCount} flagged` : ""} of {questions.length}.
-              {unansweredCount > 0
-                ? " Answer every question to enable Submit."
-                : attempt.mode === "simulation" && " Unanswered questions count as incorrect at submission."}
-            </p>
-            <button className="btn btn-primary" onClick={onSubmit} disabled={unansweredCount > 0} style={{ marginTop: 10 }}>
-              Submit {attempt.mode === "simulation" ? "exam" : "quiz"}
-            </button>
+        {showFeedbackImmediately ? (
+          <div style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 12, flexWrap: "wrap" }}>
+            {!currentAnswerRevealed ? (
+              <button className="btn btn-primary" onClick={revealCurrentAnswer} disabled={!ans?.choiceId}>
+                Submit answer
+              </button>
+            ) : index < questions.length - 1 ? (
+              <button className="btn btn-primary" onClick={goToNextStudyQuestion}>
+                Next question →
+              </button>
+            ) : (
+              <button className="btn btn-gold" onClick={onStudyDone}>
+                Finish study
+              </button>
+            )}
+            {!currentAnswerRevealed && !ans?.choiceId && (
+              <span style={{ color: "var(--slate-500)", fontSize: "0.9rem" }}>Choose an answer first.</span>
+            )}
+            {index < questions.length - 1 && onStudyDone && (
+              <button className="btn btn-outline" onClick={onStudyDone}>
+                End study
+              </button>
+            )}
           </div>
+        ) : (
+          <>
+            <div style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 12 }}>
+              <button className="btn btn-outline" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
+                ← Previous
+              </button>
+              <button
+                className="btn btn-outline"
+                onClick={() => setIndex((i) => Math.min(questions.length - 1, i + 1))}
+                disabled={index === questions.length - 1}
+              >
+                Next →
+              </button>
+            </div>
+
+            {!attempt.finalized && (
+              <div className="card" style={{ marginTop: 16 }}>
+                <p style={{ margin: 0 }}>
+                  {unansweredCount} unanswered{showNavigator ? `, ${flaggedCount} flagged` : ""} of {questions.length}.
+                  {unansweredCount > 0
+                    ? " Answer every question to enable Submit."
+                    : attempt.mode === "simulation" && " Unanswered questions count as incorrect at submission."}
+                </p>
+                <button className="btn btn-primary" onClick={onSubmit} disabled={unansweredCount > 0} style={{ marginTop: 10 }}>
+                  Submit {attempt.mode === "simulation" ? "exam" : "quiz"}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
-
 
       {(showNavigator || showTools || showLegend) && (
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -167,8 +207,6 @@ export default function AttemptRunner({
                       className="btn btn-outline"
                       style={{ padding: "4px 0", background: bg, fontWeight: i === index ? 700 : 400 }}
                       onClick={() => setIndex(i)}
-                      aria-current={i === index}
-                      aria-label={`Question ${i + 1}${a?.flagged ? ", flagged" : ""}${a?.choiceId ? ", answered" : ", unanswered"}`}
                     >
                       {i + 1}
                     </button>
@@ -177,13 +215,13 @@ export default function AttemptRunner({
               </div>
             </div>
           )}
+          {showLegend && <ChartLegendButton />}
           {showTools && (
             <>
               <Calculator />
-              <ScratchPad attemptId={attempt.id} />
+              <ScratchPad />
             </>
           )}
-          {showLegend && <ChartLegendButton />}
         </div>
       )}
     </div>

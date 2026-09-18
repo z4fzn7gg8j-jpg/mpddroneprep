@@ -142,7 +142,7 @@ export default function PracticeQuiz() {
         attempt={attempt}
         onSelect={select}
         onSubmit={submit}
-        showFeedbackImmediately={true}
+        showFeedbackImmediately={false}
         showNavigator={false}
         showTools={false}
         showLegend={true}

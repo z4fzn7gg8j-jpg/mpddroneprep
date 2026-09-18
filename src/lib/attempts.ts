@@ -102,17 +102,20 @@ export function startAttempt(opts: StartAttemptOptions): Attempt {
       questionIds = qs.map((q) => q.id);
     }
   } else {
-    // study mode: pull all published questions for the selected area/topic,
-    // or -- for a Map & Chart Reading skill category -- pull matching
-    // visual questions across every area, unrestricted practice, no fixed count.
+    // Study mode stays local/temporary and may be started from an exact
+    // lesson-specific pool. Shuffle it so repeat study sessions are not
+    // always presented in the same order, and honor an optional count.
+    let studyPool: Question[];
     if (opts.skillCategory) {
       const published = opts.pool.filter((q) => q.status === "published");
-      questionIds = mapQuestionsInCategory(published, opts.skillCategory as MapCategory).map((q) => q.id);
+      studyPool = mapQuestionsInCategory(published, opts.skillCategory as MapCategory);
     } else {
       const area = opts.areaFilter && opts.areaFilter !== "mixed" ? opts.areaFilter : null;
-      const pool = area ? opts.pool.filter((q) => q.area === area) : opts.pool;
-      questionIds = pool.filter((q) => q.status === "published").map((q) => q.id);
+      studyPool = (area ? opts.pool.filter((q) => q.area === area) : opts.pool).filter((q) => q.status === "published");
     }
+    const shuffled = [...studyPool].sort(() => Math.random() - 0.5);
+    const count = opts.count == null ? shuffled.length : Math.min(opts.count, shuffled.length);
+    questionIds = shuffled.slice(0, count).map((q) => q.id);
   }
 
   const attempt: Attempt = {
@@ -129,7 +132,7 @@ export function startAttempt(opts: StartAttemptOptions): Attempt {
     submittedAt: null,
     finalized: false,
   };
-  saveAttempt(attempt);
+  if (attempt.mode !== "study") saveAttempt(attempt);
   return attempt;
 }
 
@@ -145,7 +148,7 @@ export function recordAnswer(attempt: Attempt, questionId: string, choiceId: str
       },
     },
   };
-  saveAttempt(updated);
+  if (attempt.mode !== "study") saveAttempt(updated);
   return updated;
 }
 
@@ -158,7 +161,7 @@ export function toggleFlag(attempt: Attempt, questionId: string): Attempt {
       [questionId]: { ...current, flagged: !current.flagged },
     },
   };
-  saveAttempt(updated);
+  if (attempt.mode !== "study") saveAttempt(updated);
   return updated;
 }
 
@@ -170,7 +173,7 @@ export function finalizeAttempt(attempt: Attempt, questions: Question[]): Attemp
     finalized: true,
     score,
   };
-  saveAttempt(updated);
+  if (attempt.mode !== "study") saveAttempt(updated);
   return updated;
 }
 

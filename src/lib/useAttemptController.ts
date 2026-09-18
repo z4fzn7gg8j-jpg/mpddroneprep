@@ -24,7 +24,10 @@ export function useAttemptController() {
 
   async function begin(opts: BeginOptions) {
     setError(null);
-    if (!useRemote) {
+    // Study Mode is intentionally local-only and temporary: it should not
+    // create history/database attempts, and it must preserve an exact
+    // lesson-specific question pool when one is supplied.
+    if (opts.mode === "study" || !useRemote) {
       setAttempt(startAttemptLocal(opts));
       return;
     }
@@ -40,7 +43,7 @@ export function useAttemptController() {
 
   function select(questionId: string, choiceId: string) {
     if (!attempt) return;
-    if (!useRemote) {
+    if (attempt.mode === "study" || !useRemote) {
       setAttempt(recordAnswerLocal(attempt, questionId, choiceId));
       return;
     }
@@ -54,7 +57,7 @@ export function useAttemptController() {
 
   function toggleFlagFn(questionId: string) {
     if (!attempt) return;
-    if (!useRemote) {
+    if (attempt.mode === "study" || !useRemote) {
       setAttempt(toggleFlagLocal(attempt, questionId));
       return;
     }
@@ -69,7 +72,7 @@ export function useAttemptController() {
 
   async function submit(): Promise<Attempt | null> {
     if (!attempt) return null;
-    if (!useRemote) {
+    if (attempt.mode === "study" || !useRemote) {
       const updated = finalizeAttemptLocal(attempt, ALL_QUESTIONS);
       setAttempt(updated);
       return updated;
