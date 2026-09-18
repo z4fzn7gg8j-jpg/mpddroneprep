@@ -105,6 +105,8 @@ export default function QuestionEditor() {
     <div>
       <p>
         <Link to="/coordinator">&larr; Back to Coordinator Dashboard</Link>
+        {" \u00b7 "}
+        <Link to="/coordinator/bulk-import">Bulk Import Questions</Link>
       </p>
       <h1>Question Editor</h1>
       <p style={{ color: "var(--slate-500)" }}>

@@ -13,6 +13,7 @@ import AttemptHistory from "./pages/AttemptHistory";
 import Login from "./pages/Login";
 import MapChartsLanding from "./pages/MapChartsLanding";
 import LessonPage from "./pages/LessonPage";
+import BulkImport from "./pages/BulkImport";
 import { AuthProvider, useAuth } from "./lib/auth";
 import { isDemoMode } from "./lib/storage";
 
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/resources" element={<RequireAuth><Resources /></RequireAuth>} />
             <Route path="/coordinator" element={<RequireAuth><CoordinatorDashboard /></RequireAuth>} />
             <Route path="/coordinator/questions" element={<RequireAuth><QuestionEditor /></RequireAuth>} />
+            <Route path="/coordinator/bulk-import" element={<RequireAuth><BulkImport /></RequireAuth>} />
           </Routes>
         </main>
         <footer style={{ borderTop: "1px solid var(--line)", padding: "20px", textAlign: "center", color: "var(--slate-500)", fontSize: "0.85rem" }}>

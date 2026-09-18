@@ -50,9 +50,8 @@ export default function MapChartsLanding() {
     <div>
       <h1>Map & Chart Reading</h1>
       <p>
-        Every question here uses a real FAA figure. The goal is chart-reading skill, not memorizing one image --
-        the FAA's testing supplement will remain available, but beginning October 26, 2026, the UAG exam can also
-        include current chart images not found in that supplement. Learn the method, not the screenshot.
+        Every question here uses a real FAA figure -- sectional excerpts, weather products, the load factor
+        chart. The FAA's testing supplement stays available in every lesson.
       </p>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 20, borderBottom: "1px solid var(--line)" }}>

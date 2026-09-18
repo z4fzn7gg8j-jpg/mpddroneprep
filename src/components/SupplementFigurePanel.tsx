@@ -3,7 +3,7 @@ import type { SupplementReference } from "../lib/courseTypes";
 import { resolveSupplementReference } from "../lib/courseFigures";
 import { figureSrc } from "../lib/figures";
 
-const SUPPLEMENT_URL = "https://www.faa.gov/training_testing/testing/supplements";
+const SUPPLEMENT_URL = "https://www.faa.gov/sites/faa.gov/files/training_testing/testing/supplements/sport_rec_private_akts.pdf";
 
 interface SupplementFigurePanelProps {
   reference: SupplementReference;
@@ -21,7 +21,7 @@ export default function SupplementFigurePanel({ reference }: SupplementFigurePan
           <strong style={{ fontSize: "0.9rem" }}>Refer to FAA-CT-8080-2H, {reference.reference}</strong>
           <p style={{ margin: "4px 0 0", fontSize: "0.85rem", color: "var(--slate-500)" }}>{reference.use}</p>
         </div>
-        <a href={SUPPLEMENT_URL} target="_blank" rel="noreferrer" className="btn btn-outline" style={{ fontSize: "0.82rem", whiteSpace: "nowrap" }}>
+        <a href={SUPPLEMENT_URL} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: "0.82rem", whiteSpace: "nowrap" }}>
           Open FAA Supplement
         </a>
       </div>
